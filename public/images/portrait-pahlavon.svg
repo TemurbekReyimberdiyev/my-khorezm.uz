@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#FFFDF8"/>
+      <stop offset="100%" stop-color="#EFE4CE"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#D8C7A8" stroke-width="2"/>
+  <!-- Robe -->
+  <path d="M75 400 C85 300 135 270 200 270 C265 270 315 300 325 400 Z" fill="#8B5A2B"/>
+  <path d="M135 275 L200 390 L265 275 C245 268 155 268 135 275 Z" fill="#F4EAD5"/>
+  <path d="M135 275 L200 390 L265 275" fill="none" stroke="#C58B43" stroke-width="5"/>
+  <!-- Neck & Face -->
+  <rect x="176" y="230" width="48" height="48" rx="14" fill="#E6B88A"/>
+  <ellipse cx="200" cy="182" rx="52" ry="62" fill="#EBC094"/>
+  <!-- Beard & Mustache -->
+  <path d="M150 185 C150 240 175 262 200 262 C225 262 250 240 250 185 C240 212 220 220 200 220 C180 220 160 212 150 185 Z" fill="#3E2A1E"/>
+  <path d="M174 202 Q200 194 226 202" fill="none" stroke="#2D1D14" stroke-width="6" stroke-linecap="round"/>
+  <!-- Eyes & Brows -->
+  <path d="M168 164 Q180 158 190 163" fill="none" stroke="#3E2A1E" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M210 163 Q220 158 232 164" fill="none" stroke="#3E2A1E" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="180" cy="174" r="4" fill="#2A1C15"/>
+  <circle cx="220" cy="174" r="4" fill="#2A1C15"/>
+  <path d="M200 170 L196 192 L204 193" fill="none" stroke="#C69468" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Noble Turban -->
+  <path d="M136 155 C130 105 162 72 200 72 C238 72 270 105 264 155 C245 135 155 135 136 155 Z" fill="#C58B43"/>
+  <path d="M138 148 Q200 120 262 148" fill="none" stroke="#F6E8C8" stroke-width="10"/>
+  <path d="M144 126 Q200 102 256 126" fill="none" stroke="#F6E8C8" stroke-width="8"/>
+  <path d="M180 86 Q200 72 220 86" fill="none" stroke="#F6E8C8" stroke-width="6"/>
+</svg>

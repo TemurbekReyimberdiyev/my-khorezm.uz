@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#FFFDF8"/>
+      <stop offset="100%" stop-color="#EEE3CE"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg2)"/>
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#D8C7A8" stroke-width="2"/>
+  <!-- Royal Armor & Cape -->
+  <path d="M70 400 C82 298 135 266 200 266 C265 266 318 298 330 400 Z" fill="#15528B"/>
+  <path d="M128 272 L200 370 L272 272" fill="#C58B43"/>
+  <path d="M148 278 L200 355 L252 278" fill="#123A61"/>
+  <!-- Neck & Face -->
+  <rect x="176" y="226" width="48" height="48" rx="14" fill="#E5B689"/>
+  <ellipse cx="200" cy="180" rx="50" ry="60" fill="#ECC296"/>
+  <!-- Beard & Determined Look -->
+  <path d="M154 190 C158 236 178 256 200 256 C222 256 242 236 246 190 C234 214 218 220 200 220 C182 220 166 214 154 190 Z" fill="#2A1E17"/>
+  <path d="M174 199 Q200 192 226 199" fill="none" stroke="#1E1410" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M168 162 L191 166" stroke="#2A1E17" stroke-width="3.8" stroke-linecap="round"/>
+  <path d="M232 162 L209 166" stroke="#2A1E17" stroke-width="3.8" stroke-linecap="round"/>
+  <circle cx="180" cy="173" r="4" fill="#1E1410"/>
+  <circle cx="220" cy="173" r="4" fill="#1E1410"/>
+  <!-- Helmet / Royal Crown -->
+  <path d="M148 152 C148 102 172 68 200 60 C228 68 252 102 252 152 Z" fill="#94A3B8" stroke="#64748B" stroke-width="3"/>
+  <rect x="145" y="138" width="110" height="16" rx="5" fill="#C58B43"/>
+  <polygon points="200,45 194,65 206,65" fill="#C58B43"/>
+</svg>
