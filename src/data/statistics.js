@@ -5,7 +5,7 @@ const statsData = {
     { id: 'districts', value: '13 ta', label: 'Tuman va shaharlar', sublabel: '2 shahar, 11 tuman', icon: 'MapPin', color: '#f59e0b' },
     { id: 'heritage', value: '2500+ yil', label: 'Tarixiy meros', sublabel: 'Qadimiy sivilizatsiya markazi', icon: 'Landmark', color: '#8b5cf6' },
     { id: 'tourism', value: '200+', label: "Turistik ob'ektlar", sublabel: "UNESCO ro'yxatidagi joylar", icon: 'Compass', color: '#ef4444' },
-    { id: 'universities', value: '8 ta', label: "Oliy ta'lim muassasalari", sublabel: 'Universitet va filiallar', icon: 'GraduationCap', color: '#06b6d4' },
+    { id: 'universities', value: '10 ta', label: "Oliy ta'lim muassasalari", sublabel: 'Davlat, nodavlat va xorijiy OTMlar', icon: 'GraduationCap', color: '#06b6d4' },
   ],
   ru: [
     { id: 'population', value: '~2,0 млн', label: 'Население', sublabel: 'Примерный показатель', icon: 'Users', color: '#3b82f6' },
@@ -13,7 +13,7 @@ const statsData = {
     { id: 'districts', value: '13', label: 'Районов и городов', sublabel: '2 города, 11 районов', icon: 'MapPin', color: '#f59e0b' },
     { id: 'heritage', value: '2500+ лет', label: 'Историческое наследие', sublabel: 'Центр древней цивилизации', icon: 'Landmark', color: '#8b5cf6' },
     { id: 'tourism', value: '200+', label: 'Туристических объектов', sublabel: 'Включая объекты ЮНЕСКО', icon: 'Compass', color: '#ef4444' },
-    { id: 'universities', value: '8', label: 'ВУЗов', sublabel: 'Университеты и филиалы', icon: 'GraduationCap', color: '#06b6d4' },
+    { id: 'universities', value: '10', label: 'ВУЗов', sublabel: 'Государственные, частные и филиалы', icon: 'GraduationCap', color: '#06b6d4' },
   ],
   en: [
     { id: 'population', value: '~2.0M', label: 'Population', sublabel: 'Approximate figure', icon: 'Users', color: '#3b82f6' },
@@ -21,7 +21,7 @@ const statsData = {
     { id: 'districts', value: '13', label: 'Districts & Cities', sublabel: '2 cities, 11 districts', icon: 'MapPin', color: '#f59e0b' },
     { id: 'heritage', value: '2500+ yrs', label: 'Historical Heritage', sublabel: 'Ancient civilization cradle', icon: 'Landmark', color: '#8b5cf6' },
     { id: 'tourism', value: '200+', label: 'Tourism Sites', sublabel: 'Including UNESCO heritage', icon: 'Compass', color: '#ef4444' },
-    { id: 'universities', value: '8', label: 'Higher Education', sublabel: 'Universities & branches', icon: 'GraduationCap', color: '#06b6d4' },
+    { id: 'universities', value: '10', label: 'Higher Education', sublabel: 'State, private & foreign HEIs', icon: 'GraduationCap', color: '#06b6d4' },
   ],
 };
 
