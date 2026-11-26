@@ -21,7 +21,9 @@ const khanateContent = {
       { icon: 'crown', bg: '#FFF3E0', color: '#C58B43', title: "Shayboniy–Arabshohiylar davri (1511–1804)", text: "Elbarsxon (1511–1516) asos solgan sulolada Abulg'oziy Bahodirxon (1643–1663) alohida o'rin tutadi: u 1643-yilda Toza Urganchga (hozirgi Urganch) asos solib, «Shajarayi turk» asarini yozdi; o'g'li Anushaxon esa Shovot kanalini qazdirdi." },
       { icon: 'museum', bg: '#EBF3FA', color: '#15528B', title: "Qo'ng'irotlar sulolasi va Ichan-Qal'a (1763/1804–1920)", text: "Muhammad Amin Inoq va Eltuzarxon (1804) Qo'ng'irotlar hokimiyatini mustahkamladi. Muhammad Rahimxon I (1806–1825) va Olloqulixon (1825–1842) davrida Toshhovli saroyi, karvonsaroy va o'nlab madrasalar bunyod etildi." },
       { icon: 'scroll', bg: '#E8F5EE', color: '#319568', title: "1873-yil Gandimiyon shartnomasi va Feruz", text: "Muhammad Rahimxon II — Feruz (1864–1910) davrida Markaziy Osiyoda ilk toshbosma nashriyot, Xorazm maqomlari va Munis–Ogahiy tarix maktabi yuksaldi. 1873-yilgi Gandimiyon shartnomasidan keyin xonlik Rossiya imperiyasi protektoratiga aylandi." },
-      { icon: 'flag', bg: '#F3EEFF', color: '#7C3AED', title: "Islomxo'ja islohotlari va xonlik tugatilishi (1910–1920)", text: "Bosh vazir Islomxo'ja 1910–1913-yillarda yangi maktab, shifoxona va pochta-telegraf qurdirdi. 1918–1920-yillarda so'nggi xon Said Abdullaxon davrida siyosiy inqiroz kuchayib, 1920-yil 2-fevralda xonlik tugatildi." },
+      { icon: 'flag', bg: '#F3EEFF', color: '#7C3AED', title: "Islomxo'ja islohotlari va xonlik tugatilishi (1910–1920)", text: "Bosh vazir Islomxo'ja 1910–1913-yillarda yangi usul maktabi, shifoxona va pochta-telegraf qurdirdi. 1918–1920-yillarda so'nggi xon Said Abdullaxon davrida siyosiy inqiroz kuchayib, 1920-yil 2-fevralda xonlik tugatildi." },
+      { icon: 'book', bg: '#FFF8EE', color: '#C58B43', title: "Xiva toshbosmasi (1874) va Otajon Abdolov", text: "1874-yilda Feruz tashabbusi bilan Ko'hna Arkda Markaziy Osiyoda ilk toshbosma tipografiya ochildi. Bosh matbaachi Otajon Abdolov (1856–1939) 1876-yilda «Nisobus-sibiyon» kitobini hamda Navoiy, Ogahiy va Feruz asarlarini chop etdi." },
+      { icon: 'camera', bg: '#E0F7FA', color: '#0891B2', title: "Xudoybergan Devonov va ilk o'zbek kino san'ati", text: "Xivalik fotograf va kinooperator Xudoybergan Devonov (1878–1938) Xorazm me'morchiligi hamda ijtimoiy hayotini ilk bor fotolenta va kinokadrga muhrlab, o'zbek milliy kino va fotografiya maktabiga asos soldi." },
     ],
     rulersTitle: "Xiva xonligining eng mashhur hukmdorlari",
     rulers: [
@@ -57,6 +59,8 @@ const khanateContent = {
       { icon: 'museum', bg: '#EBF3FA', color: '#15528B', title: "Династия Кунгратов и Ичан-Кала (1804–1920)", text: "Эльтузар-хан (1804) закрепил трон за Кунгратами. Мухаммад Рахим-хан I объединил земли Приаралья, а при Аллакули-хане (1825–1842) возведены дворец Таш-Хаули и торговые купола." },
       { icon: 'scroll', bg: '#E8F5EE', color: '#319568', title: "Договор 1873 года и эпоха Феруза", text: "При Мухаммаде Рахим-хане II (поэт Феруз, 1864–1910) открылась первая типография, развивались макомы и историческая школа Муниса и Агахи. После Гандимиянского договора 1873 г. ханство стало протекторатом Российской империи." },
       { icon: 'flag', bg: '#F3EEFF', color: '#7C3AED', title: "Реформы Ислам-Ходжи и 1920 год", text: "В 1910–1913 гг. визирь Ислам-Ходжа построил светскую школу, больницу и высокий минарет. 2 февраля 1920 года последний хан Саид Абдулла-хан отрёкся от престола, уступив место Хорезмской НСР." },
+      { icon: 'book', bg: '#FFF8EE', color: '#C58B43', title: "Первая литография Хивы (1874) и Атаджан Абдалов", text: "В 1874 году при Куня-Арке открылась первая в Центральной Азии литография. Мастер Атаджан Абдалов (1856–1939) издал там первую печатную книгу «Нисаб ас-сибьян» (1876), диваны Навои, Агахи и Феруза." },
+      { icon: 'camera', bg: '#E0F7FA', color: '#0891B2', title: "Худайберген Деванов — пионер кино и фото", text: "Уроженец Хивы Худайберген Деванов (1878–1938) стал первым узбекским фотографом и кинооператором, запечатлевшим на плёнку памятники Ичан-Калы и жизнь оазиса на рубеже XIX–XX веков." },
     ],
     rulersTitle: "Выдающиеся правители Хивинского ханства",
     rulers: [
@@ -92,6 +96,8 @@ const khanateContent = {
       { icon: 'museum', bg: '#EBF3FA', color: '#15528B', title: "Kungrat Dynasty & Ichan-Kala (1804–1920)", text: "Eltuzar Khan (1804) inaugurated formal Kungrat rule. Muhammad Rahim Khan I unified the Aral delta, and Alloqulikhan (1825–1842) constructed Toshhovli Palace, caravanserais, and major madrasas." },
       { icon: 'scroll', bg: '#E8F5EE', color: '#319568', title: "1873 Gandimiyon Treaty & Khan Feruz", text: "Despite becoming a Russian protectorate after the 1873 Treaty of Gandimiyon, Khan Muhammad Rahim II (poet Feruz, 1864–1910) established Central Asia’s first lithographic press and championed Khorezmian maqom and historiography." },
       { icon: 'flag', bg: '#F3EEFF', color: '#7C3AED', title: "Islam Khoja Reforms & 1920 Abdication", text: "Grand Vizier Islam Khoja erected Khiva’s tallest minaret, a modern school, hospital, and telegraph office (1910–1913). Following political upheaval, Said Abdullah Khan abdicated on February 2, 1920." },
+      { icon: 'book', bg: '#FFF8EE', color: '#C58B43', title: "Khiva Lithographic Press (1874) & Otajon Abdolov", text: "Opened at Kunya-Ark in 1874 as Central Asia’s first lithographic press. Pioneer printer Otajon Abdolov (1856–1939) printed the region’s first printed book Nisob us-Sibiyon (1876) alongside works by Navoi, Agahi, and Feruz." },
+      { icon: 'camera', bg: '#E0F7FA', color: '#0891B2', title: "Khudaybergen Devanov — Uzbek Cinema Pioneer", text: "Born in Khiva, Khudaybergen Devanov (1878–1938) pioneered Uzbek photography and documentary cinematography, filming Ichan-Kala and oasis life across the late Khanate and early 20th century." },
     ],
     rulersTitle: "Notable Khans of Khiva",
     rulers: [
@@ -134,8 +140,11 @@ export default function KhivaKhanatePage() {
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {content.kpis.map((k) => (
+          {content.kpis.map((k, idx) => (
             <div key={k.l} className="bg-white border border-[#E5EAF0] rounded-xl p-4 text-center">
+              <div className="w-9 h-9 rounded-lg bg-[#F7F9FC] flex items-center justify-center mx-auto mb-2">
+                <Icon3D name={['history', 'crown', 'map', 'scroll'][idx] || 'crown'} alt={k.l} size={24} />
+              </div>
               <div className="font-bold text-[#15528B] text-sm sm:text-base">{k.v}</div>
               <div className="text-xs text-[#66758A] mt-0.5">{k.l}</div>
             </div>

@@ -1,9 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Calendar, ArrowRight, ArrowLeft, Award, Landmark } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { getHistoryData } from '../../data/history';
 import { useLanguage } from '../../hooks/useLanguage';
 import PageHero from '../../components/common/PageHero';
+import Icon3D from '../../components/common/Icon3D';
 
 export default function HistoryTimelinePage() {
   const { language, t } = useLanguage();
@@ -22,17 +23,20 @@ export default function HistoryTimelinePage() {
         breadcrumb={`${t.nav.home} > ${t.nav.history} > ${h.archiveTitle}`}
       />
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
-        {/* Modern Region Milestones (1920 - Present) from Xorazm viloyati Wikipedia */}
+        {/* Modern Region Milestones (1920 - Present) */}
         <div className="bg-white border border-[#E5EAF0] rounded-2xl p-6 shadow-sm">
-          <div className="flex items-center gap-2 mb-3">
-            <Award size={18} className="text-[#15528B]" />
+          <div className="flex items-center gap-2.5 mb-3">
+            <Icon3D name="award" size={24} />
             <h2 className="font-bold text-[#17243B] text-lg">{viloyatModern.title}</h2>
           </div>
           <p className="text-sm text-[#66758A] leading-relaxed mb-5">{viloyatModern.summary}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {viloyatModern.milestones.map((m) => (
               <div key={m.date} className="p-4 rounded-xl bg-[#F7F9FC] border border-[#E5EAF0]">
-                <div className="text-xs font-bold text-[#15528B] mb-1">{m.date}</div>
+                <div className="text-xs font-bold text-[#15528B] mb-1 flex items-center gap-1.5">
+                  <Icon3D name="calendar" size={14} />
+                  <span>{m.date}</span>
+                </div>
                 <div className="font-bold text-sm text-[#17243B] mb-1">{m.title}</div>
                 <p className="text-xs text-[#66758A] leading-relaxed">{m.desc}</p>
               </div>
@@ -50,7 +54,7 @@ export default function HistoryTimelinePage() {
               />
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: era.color }}>
-                  <Calendar size={12} /> {era.dates}
+                  <Icon3D name="history" size={14} /> {era.dates}
                 </span>
                 <Link to={era.href} className="text-xs font-semibold text-[#15528B] flex items-center gap-1 hover:gap-2 transition-all">
                   {t.common.readMore} <ArrowRight size={12} />
@@ -71,8 +75,8 @@ export default function HistoryTimelinePage() {
 
         {/* Capitals Archive */}
         <div className="bg-white border border-[#E5EAF0] rounded-2xl p-6 shadow-sm">
-          <div className="flex items-center gap-2 mb-3">
-            <Landmark size={18} className="text-[#C58B43]" />
+          <div className="flex items-center gap-2.5 mb-3">
+            <Icon3D name="museum" size={24} />
             <h2 className="font-bold text-[#17243B] text-base">{etymology.capitalsTitle}</h2>
           </div>
           <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-4">{etymology.text}</p>

@@ -13,8 +13,8 @@ const ERA_PHOTOS = [
   '/images/districts/tuproqqala-tumani.jpg',
   '/images/kunya-ark.jpg',
   '/images/history/kutlug-timur.jpg',
+  '/images/history/turabek-khanum.jpg',
   '/images/khiva-hero.jpg',
-  '/images/nurullaboy.jpg',
   '/images/urgench-modern.jpg',
   '/images/kalta-minor.jpg',
 ];
@@ -32,10 +32,10 @@ export default function HistoryPage() {
   ];
 
   const statsItems = [
-    { v: '2500+ yil', l: language === 'ru' ? 'Исторический период' : language === 'en' ? 'History Span' : 'Tarixiy rivojlanish davri' },
-    { v: '1938-yil 15-yanvar', l: language === 'ru' ? 'Образование области' : language === 'en' ? 'Region Founded' : 'Viloyat tashkil topgan sana' },
-    { v: '8 ta poytaxt', l: language === 'ru' ? 'Исторические столицы' : language === 'en' ? 'Historic Capitals' : 'Tarixiy poytaxtlar' },
-    { v: '2003-yil', l: language === 'ru' ? 'Орден Дж. Мангуберди' : language === 'en' ? 'Manguberdi Order' : 'J. Manguberdi ordeni' },
+    { icon: 'history', v: '2500+ yil', l: language === 'ru' ? 'Исторический период' : language === 'en' ? 'History Span' : 'Tarixiy rivojlanish davri' },
+    { icon: 'calendar', v: '1938-yil 15-yanvar', l: language === 'ru' ? 'Образование области' : language === 'en' ? 'Region Founded' : 'Viloyat tashkil topgan sana' },
+    { icon: 'museum', v: '8 ta poytaxt', l: language === 'ru' ? 'Исторические столицы' : language === 'en' ? 'Historic Capitals' : 'Tarixiy poytaxtlar' },
+    { icon: 'award', v: '2003-yil', l: language === 'ru' ? 'Орден Дж. Мангуберди' : language === 'en' ? 'Manguberdi Order' : 'J. Manguberdi ordeni' },
   ];
 
   const khanateHighlight = {
@@ -99,7 +99,7 @@ export default function HistoryPage() {
               <div className="xl:col-span-8 bg-white border border-[#E5EAF0] rounded-2xl p-5 flex flex-col sm:flex-row gap-4 items-center">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <BookOpen size={17} className="text-[#15528B]" />
+                    <Icon3D name="book" size={20} />
                     <h2 className="font-bold text-[#17243B] text-base">{h.introTitle}</h2>
                   </div>
                   <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-4">{h.introText}</p>
@@ -111,10 +111,16 @@ export default function HistoryPage() {
               </div>
 
               <div className="xl:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5">
-                <h3 className="font-bold text-[#17243B] text-sm mb-3">{t.home.statsTitle}</h3>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon3D name="chart" size={20} />
+                  <h3 className="font-bold text-[#17243B] text-sm">{t.home.statsTitle}</h3>
+                </div>
                 {statsItems.map((st) => (
-                  <div key={st.l} className="flex justify-between py-2 border-b border-[#F7F9FC] last:border-0 text-xs">
-                    <span className="text-[#66758A]">{st.l}</span>
+                  <div key={st.l} className="flex items-center justify-between gap-2 py-2 border-b border-[#F7F9FC] last:border-0 text-xs">
+                    <span className="text-[#66758A] flex items-center gap-2">
+                      <Icon3D name={st.icon} size={16} />
+                      <span>{st.l}</span>
+                    </span>
                     <span className="font-bold text-[#15528B]">{st.v}</span>
                   </div>
                 ))}
@@ -179,7 +185,7 @@ export default function HistoryPage() {
                 <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
                   {people.map((p) => (
                     <Link key={p.id} to={`/shaxslar/${p.slug}`} className="text-center group">
-                      <img src={p.photo} alt={p.name} className="w-full aspect-square rounded-xl object-cover border border-[#E5EAF0] bg-[#FAF6EF] group-hover:border-[#15528B]" />
+                      <img src={p.photo} alt={p.name} className="w-full aspect-square rounded-xl object-cover object-top border border-[#E5EAF0] bg-[#FAF6EF] group-hover:border-[#15528B]" />
                       <div className="text-[11px] font-semibold text-[#17243B] mt-1.5 line-clamp-2">{p.name}</div>
                     </Link>
                   ))}

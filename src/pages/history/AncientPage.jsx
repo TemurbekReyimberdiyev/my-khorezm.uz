@@ -47,6 +47,20 @@ const ancientData = {
         title: "Afrig'iylar sulolasi va Kot (305–X asr)",
         text: "Abu Rayhon Beruniy Xorazm davlatiga afsonaviy Siyovush asos solgani hamda Afrig'iylar sulolasining 22 nafar Xorazmshohi hukmronligini yozib qoldirgan. Poytaxt avval Tuproqqal'ada bo'lib, 305-yilda Kot shahriga ko'chirilgan; I–VIII asrlarda hukmdor va suvoriy tasvirli kumush tangalar zarb etilgan.",
       },
+      {
+        icon: 'scroll',
+        color: '#0891B2',
+        bg: '#E0F7FA',
+        title: "Xorazm yozuvi, Avesto va astronomik taqvim",
+        text: "Mil. avv. IV–III asrlardan oromiy yozuvi negizida qadimgi xorazmiy alifbosi shakllangan; Tuproqqal'a va Qo'yqirilgan-Qal'adan teri va yog'ochga bitilgan arxiv hujjatlari topilgan. Beruniy «Qadimgi xalqlardan qolgan yodgorliklar» asarida xorazmiylarning quyosh taqvimi, oylari va Avesto an'analarini batafsil bayon qilgan.",
+      },
+      {
+        icon: 'waves',
+        color: '#319568',
+        bg: '#E8F5EE',
+        title: "Qadimgi irrigatsiya va Ipak yo'li savdosi",
+        text: "Amudaryo quyi oqimida yirik magistral kanallar tizimi (Chermenyab, G'ozovot va b.) qazilib, minglab gektar yerlar sug'orilgan. Qadimgi Xorazm Volga bo'yi, Sharqiy Yevropa va Shimoliy Xitoy bilan kumush, ipak va hunarmandchilik mahsulotlari savdosida muhim bo'g'in bo'lgan.",
+      },
     ],
     sitesTitle: "Asosiy qal'alar va arxeologik yodgorliklar",
     sites: [
@@ -97,6 +111,20 @@ const ancientData = {
         bg: '#F3EEFF',
         title: "Династия Афригидов и столица Кят (305–X в.)",
         text: "Аль-Беруни описал правление 22 хорезмшахов династии Афригидов. Столица из Топрак-Калы в 305 году была перенесена в Кят; с I по VIII в. чеканились собственные серебряные монеты с изображением царя в короне и всадника.",
+      },
+      {
+        icon: 'scroll',
+        color: '#0891B2',
+        bg: '#E0F7FA',
+        title: "Хорезмийская письменность и календарь",
+        text: "С IV–III вв. до н.э. на основе арамейского письма сложилась самобытная хорезмийская письменность (архивы на коже и дереве из Топрак-Калы и Кой-Крылган-Калы). Аль-Беруни подробно описал хорезмийский солнечный календарь и традиции эпохи «Авесты».",
+      },
+      {
+        icon: 'waves',
+        color: '#319568',
+        bg: '#E8F5EE',
+        title: "Древняя ирригация и Великий шёлковый путь",
+        text: "В античном Хорезме действовали протяжённые магистральные каналы длиной десятки километров. Оазис связывал Среднюю Азию со степями Приаралья, Поволжьем и Восточной Европой караванной торговлей серебром и ремёслами.",
       },
     ],
     sitesTitle: "Древние крепости и археологические памятники",
@@ -149,6 +177,20 @@ const ancientData = {
         title: "Afrighid Dynasty & Kath (305 CE–10th c.)",
         text: "Al-Biruni recorded 22 Afrighid Khorezmshahs descending from legendary Siyavush. In 305 CE the capital moved from Toprak-Kala to Kath, minting silver drachms showing crowned kings and horsemen until the 8th century.",
       },
+      {
+        icon: 'scroll',
+        color: '#0891B2',
+        bg: '#E0F7FA',
+        title: "Khwarazmian Script & Astronomical Calendar",
+        text: "Developed from Aramaic script by the 4th–3rd centuries BCE, native Khwarazmian writing appears in leather and wood archives from Toprak-Kala and Koy-Krylgan-Kala. Al-Biruni preserved details of the native Khorezmian solar calendar and Avestan customs.",
+      },
+      {
+        icon: 'waves',
+        color: '#319568',
+        bg: '#E8F5EE',
+        title: "Oasis Canals & Northern Silk Road Trade",
+        text: "Ancient engineers excavated large arterial canals turning desert deltas into fertile farmland, while caravans linked Khorezm with the Volga steppes, Eastern Europe, and Iran.",
+      },
     ],
     sitesTitle: "Key Fortresses & Archaeological Citadels",
     sites: [
@@ -182,8 +224,11 @@ export default function AncientPage() {
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {content.kpis.map((k) => (
+          {content.kpis.map((k, idx) => (
             <div key={k.l} className="bg-white border border-[#E5EAF0] rounded-xl p-4 text-center">
+              <div className="w-9 h-9 rounded-lg bg-[#F7F9FC] flex items-center justify-center mx-auto mb-2">
+                <Icon3D name={['layers', 'compass', 'crown', 'museum'][idx] || 'museum'} alt={k.l} size={24} />
+              </div>
               <div className="font-bold text-[#15528B] text-base sm:text-lg">{k.v}</div>
               <div className="text-xs text-[#66758A] mt-0.5">{k.l}</div>
             </div>

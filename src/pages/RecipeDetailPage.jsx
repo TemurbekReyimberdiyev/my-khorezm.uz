@@ -1,19 +1,26 @@
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
-import { Clock, Users, ChefHat, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ZoomIn } from 'lucide-react';
 import { getRecipes } from '../data/recipes';
 import { useLanguage } from '../hooks/useLanguage';
 import Badge from '../components/common/Badge';
 import PageHero from '../components/common/PageHero';
+import Icon3D from '../components/common/Icon3D';
+import ImageLightbox from '../components/common/ImageLightbox';
 
 export default function RecipeDetailPage() {
   const { slug } = useParams();
+  return <RecipeDetailContent key={slug} slug={slug} />;
+}
+
+function RecipeDetailContent({ slug }) {
   const { language, t } = useLanguage();
   const cu = t.pages.cuisine;
   const recipes = getRecipes(language);
   const recipe = recipes.find((r) => r.slug === slug);
   const [checked, setChecked] = useState([]);
+  const [lightboxIdx, setLightboxIdx] = useState(-1);
 
   if (!recipe) {
     return (
@@ -36,34 +43,54 @@ export default function RecipeDetailPage() {
       </Helmet>
       <PageHero
         title={recipe.name}
-        subtitle={recipe.description}
+        subtitle={`${recipe.category} · ${recipe.cookTime} · ${recipe.servings} ${cu.servingsUnit}`}
         image={recipe.photo}
         badge={<Badge variant="accent">{recipe.category}</Badge>}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="mb-4">
+          <Link to="/taomlar" className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#15528B] hover:underline">
+            <ArrowLeft size={14} /> {t.common.back}
+          </Link>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-6 items-stretch">
           <div className="lg:col-span-5">
-            <img
-              src={recipe.photo}
-              alt={recipe.name}
-              className="w-full h-64 lg:h-full min-h-[220px] object-cover rounded-2xl border border-[#E5EAF0]"
-            />
+            <button
+              type="button"
+              onClick={() => setLightboxIdx(0)}
+              className="relative group w-full h-full block cursor-pointer rounded-2xl overflow-hidden border border-[#E5EAF0]"
+            >
+              <img
+                src={recipe.photo}
+                alt={recipe.name}
+                className="w-full h-64 lg:h-full min-h-[220px] object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <span className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn size={15} />
+              </span>
+            </button>
           </div>
           <div className="lg:col-span-7 flex flex-col justify-between gap-4">
             <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5 flex-1">
-              <h2 className="font-bold text-[#17243B] text-base mb-2">{recipe.name}</h2>
+              <div className="flex items-center gap-2 mb-2">
+                <Icon3D name="cuisine" size={20} />
+                <h2 className="font-bold text-[#17243B] text-base">{recipe.name}</h2>
+              </div>
               <p className="text-sm text-[#66758A] leading-relaxed">{recipe.description}</p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[
-                { icon: Clock, l: cu.cookTime, v: recipe.cookTime },
-                { icon: Clock, l: cu.prepTime, v: recipe.prepTime },
-                { icon: Users, l: cu.servings, v: `${recipe.servings} ${cu.servingsUnit}` },
-                { icon: ChefHat, l: cu.difficulty, v: recipe.difficulty },
+                { icon: 'clock', l: cu.cookTime, v: recipe.cookTime },
+                { icon: 'calendar', l: cu.prepTime, v: recipe.prepTime },
+                { icon: 'users', l: cu.servings, v: `${recipe.servings} ${cu.servingsUnit}` },
+                { icon: 'chef', l: cu.difficulty, v: recipe.difficulty },
               ].map((item) => (
                 <div key={item.l} className="bg-white border border-[#E5EAF0] rounded-xl p-3 text-center">
-                  <item.icon size={18} className="mx-auto text-[#15528B] mb-1" />
+                  <div className="flex justify-center mb-1.5">
+                    <Icon3D name={item.icon} size={22} />
+                  </div>
                   <div className="text-xs text-[#66758A]">{item.l}</div>
                   <div className="font-semibold text-[#17243B] text-sm">{item.v}</div>
                 </div>
@@ -72,9 +99,19 @@ export default function RecipeDetailPage() {
           </div>
         </div>
 
+        <ImageLightbox
+          items={[{ src: recipe.photo, title: recipe.name, subtitle: recipe.category }]}
+          index={lightboxIdx}
+          onClose={() => setLightboxIdx(-1)}
+          onChange={setLightboxIdx}
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-white border border-[#E5EAF0] rounded-2xl p-6">
-            <h2 className="font-bold text-[#17243B] mb-4">{cu.ingredients}</h2>
+            <div className="flex items-center gap-2 mb-4">
+              <Icon3D name="cuisine" size={20} />
+              <h2 className="font-bold text-[#17243B]">{cu.ingredients}</h2>
+            </div>
             <ul className="space-y-2">
               {recipe.ingredients.map((ing, i) => (
                 <li key={i} className="flex items-center gap-3 cursor-pointer" onClick={() => toggleCheck(i)}>
@@ -92,7 +129,10 @@ export default function RecipeDetailPage() {
           </div>
 
           <div className="bg-white border border-[#E5EAF0] rounded-2xl p-6">
-            <h2 className="font-bold text-[#17243B] mb-4">{cu.steps}</h2>
+            <div className="flex items-center gap-2 mb-4">
+              <Icon3D name="chef" size={20} />
+              <h2 className="font-bold text-[#17243B]">{cu.steps}</h2>
+            </div>
             <ol className="space-y-4">
               {recipe.steps.map((step, i) => (
                 <li key={i} className="flex gap-3">

@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Thermometer, Droplets, Wind, Sun, Layers, Waves, TreePine, Zap, MapPin, Compass, CheckCircle, Play, FileText, Download, ArrowRight } from 'lucide-react';
+import { CheckCircle, Play, Download, ArrowRight } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { getGeographyData } from '../data/geography';
 import { useLanguage } from '../hooks/useLanguage';
@@ -14,29 +14,29 @@ export default function GeographyPage() {
   const g = t.pages.geography;
 
   const sidebarLinks = [
-    { label: g.locationTitle, href: '#overview', icon: MapPin },
-    { label: g.climateTitle, href: '#climate', icon: Sun },
-    { label: g.waterNetTitle, href: '#rivers', icon: Waves },
-    { label: g.soilCoverTitle, href: '#soil', icon: Layers },
-    { label: g.floraTitle, href: '#flora', icon: TreePine },
-    { label: g.resourcesTitle, href: '#resources', icon: Zap },
-    { label: g.solarTitle, href: '#solar', icon: Compass },
+    { label: g.locationTitle, href: '#overview', icon: 'map-pin' },
+    { label: g.climateTitle, href: '#climate', icon: 'sun' },
+    { label: g.waterNetTitle, href: '#rivers', icon: 'waves' },
+    { label: g.soilCoverTitle, href: '#soil', icon: 'layers' },
+    { label: g.floraTitle, href: '#flora', icon: 'tree' },
+    { label: g.resourcesTitle, href: '#resources', icon: 'globe' },
+    { label: g.solarTitle, href: '#solar', icon: 'compass' },
   ];
 
   const subCards = [
-    { label: t.nav.waterResources, href: '/geografiya/suv-resurslari', icon: Waves, photo: '/images/amudarya-oasis.jpg', desc: geo.rivers[0].desc },
-    { label: t.nav.soil, href: '/geografiya/tuproq', icon: Layers, photo: '/images/soil-oasis.jpg', desc: geo.soilTypes[0].desc },
-    { label: t.nav.floraFauna, href: '/geografiya/flora-fauna', icon: TreePine, photo: '/images/flora-gazelle.jpg', desc: geo.flora.slice(0, 3).join(', ') },
-    { label: g.reliefTitle, href: '/geografiya/iqlim', icon: Sun, photo: '/images/kyzylkum-desert.jpg', desc: geo.climate.seasons[1].desc },
-    { label: g.solarTitle, href: '/ekologiya', icon: Zap, photo: '/images/solar-khorezm.jpg', desc: geo.facts[1] },
+    { label: t.nav.waterResources, href: '/geografiya/suv-resurslari', icon: 'waves', photo: '/images/amudarya-oasis.jpg', desc: geo.rivers[0].desc },
+    { label: t.nav.soil, href: '/geografiya/tuproq', icon: 'layers', photo: '/images/soil-oasis.jpg', desc: geo.soilTypes[0].desc },
+    { label: t.nav.floraFauna, href: '/geografiya/flora-fauna', icon: 'tree', photo: '/images/flora-gazelle.jpg', desc: geo.flora.slice(0, 3).join(', ') },
+    { label: g.reliefTitle, href: '/geografiya/iqlim', icon: 'sun', photo: '/images/kyzylkum-desert.jpg', desc: geo.climate.seasons[1].desc },
+    { label: g.solarTitle, href: '/ekologiya', icon: 'globe', photo: '/images/solar-khorezm.jpg', desc: geo.facts[1] },
   ];
 
   const resourceLabels = [
-    { icon: Waves, color: '#15528B', bg: '#EBF3FA', title: t.nav.waterResources, sub: geo.rivers[0].name },
-    { icon: Layers, color: '#319568', bg: '#E8F5EE', title: t.nav.soil, sub: geo.soilTypes[0].name },
-    { icon: Sun, color: '#C58B43', bg: '#FFF3E0', title: g.solarTitle, sub: '280–300 ' + (language === 'ru' ? 'солн. дней' : language === 'en' ? 'sunny days' : 'quyoshli kun') },
-    { icon: Zap, color: '#7C3AED', bg: '#F3EEFF', title: g.resourcesTitle, sub: geo.resources[0] },
-    { icon: TreePine, color: '#0891B2', bg: '#E0F7FA', title: t.nav.floraFauna, sub: geo.fauna[0] },
+    { bg: '#EBF3FA', title: t.nav.waterResources, sub: geo.rivers[0].name },
+    { bg: '#E8F5EE', title: t.nav.soil, sub: geo.soilTypes[0].name },
+    { bg: '#FFF3E0', title: g.solarTitle, sub: '280–300 ' + (language === 'ru' ? 'солн. дней' : language === 'en' ? 'sunny days' : 'quyoshli kun') },
+    { bg: '#F3EEFF', title: g.resourcesTitle, sub: geo.resources[0] },
+    { bg: '#E0F7FA', title: t.nav.floraFauna, sub: geo.fauna[0] },
   ];
 
   const pdfTitle = language === 'ru' ? 'Справочник и карты (PDF)' : language === 'en' ? 'Atlas & Fact Sheet (PDF)' : "Matnli xarita va ma'lumotlar";
@@ -67,7 +67,7 @@ export default function GeographyPage() {
                       idx === 0 ? 'bg-[#15528B] text-white' : 'text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]'
                     }`}
                   >
-                    <l.icon size={14} className="shrink-0" />
+                    <Icon3D name={l.icon} size={18} />
                     <span className="truncate">{l.label}</span>
                   </a>
                 ))}
@@ -81,10 +81,18 @@ export default function GeographyPage() {
               <div className="xl:col-span-8 bg-white border border-[#E5EAF0] rounded-2xl p-5 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                 <div>
                   <div className="flex items-center gap-2 mb-2.5">
-                    <MapPin size={17} className="text-[#15528B]" />
+                    <Icon3D name="map-pin" size={20} />
                     <h2 className="font-bold text-[#17243B] text-base">{g.locationTitle}</h2>
                   </div>
-                  <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-4">{geo.overview}</p>
+                  <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-3">{geo.overview}</p>
+                  <ul className="space-y-1 mb-4">
+                    {geo.boundaries.map((b) => (
+                      <li key={b} className="text-[11px] text-[#66758A] flex items-start gap-1.5">
+                        <span className="text-[#319568] font-bold">•</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
                   <Link
                     to="/geografiya/suv-resurslari"
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#15528B] bg-[#F7F9FC] border border-[#E5EAF0] px-3.5 py-2 rounded-lg hover:bg-[#EBF3FA]"
@@ -97,7 +105,7 @@ export default function GeographyPage() {
 
               <div className="xl:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <Compass size={17} className="text-[#15528B]" />
+                  <Icon3D name="compass" size={20} />
                   <h2 className="font-bold text-[#17243B] text-sm">{g.keyStatsTitle}</h2>
                 </div>
                 {geo.keyStats.map((item) => (
@@ -114,7 +122,7 @@ export default function GeographyPage() {
               <div className="lg:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <Sun size={17} className="text-[#C58B43]" />
+                    <Icon3D name="sun" size={20} />
                     <h2 className="font-bold text-[#17243B] text-sm">{g.climateTitle}</h2>
                   </div>
                   <Link to="/geografiya/iqlim" className="text-xs text-[#15528B] font-semibold hover:underline">
@@ -124,9 +132,9 @@ export default function GeographyPage() {
                 <p className="text-xs text-[#66758A] mb-3 leading-relaxed">{geo.climate.description}</p>
                 <div className="grid grid-cols-2 gap-2">
                   {[
-                    { icon: 'sun', label: g.climateCards.summer, value: '+35...+42°C', bg: '#FFF1E6' },
-                    { icon: 'snow', label: g.climateCards.winter, value: '-5...-15°C', bg: '#EBF3FA' },
-                    { icon: 'rain', label: g.climateCards.annualPrecip, value: '80–120 mm', bg: '#E0F7FA' },
+                    { icon: 'sun', label: g.climateCards.summer, value: '+35...+44°C', bg: '#FFF1E6' },
+                    { icon: 'snow', label: g.climateCards.winter, value: '-4...-15°C', bg: '#EBF3FA' },
+                    { icon: 'rain', label: g.climateCards.annualPrecip, value: '80–100 mm', bg: '#E0F7FA' },
                     { icon: 'wind', label: g.climateCards.wind, value: '3–6 m/s', bg: '#E8F5EE' },
                   ].map((c) => (
                     <div key={c.label} className="rounded-xl p-2.5 text-center border border-[#E5EAF0]" style={{ backgroundColor: c.bg }}>
@@ -178,7 +186,7 @@ export default function GeographyPage() {
                     <img src={s.photo} alt={s.label} className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div className="p-3">
                       <div className="flex items-center gap-1.5 text-[#15528B] font-bold text-xs">
-                        <s.icon size={13} /> {s.label}
+                        <Icon3D name={s.icon} size={18} /> {s.label}
                       </div>
                       <p className="text-[11px] text-[#66758A] mt-1 line-clamp-2">{s.desc}</p>
                     </div>
@@ -279,7 +287,7 @@ export default function GeographyPage() {
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <FileText size={17} className="text-[#15528B]" />
+                    <Icon3D name="book" size={20} />
                     <h3 className="font-bold text-[#17243B] text-sm">{pdfTitle}</h3>
                   </div>
                   <p className="text-xs text-[#66758A] leading-relaxed">{g.subtitle}</p>
@@ -292,6 +300,8 @@ export default function GeographyPage() {
                 </Link>
               </div>
             </div>
+
+            <p className="text-xs text-[#66758A]">{geo.sourceNote}</p>
           </div>
         </div>
       </div>

@@ -23,6 +23,7 @@ const shahsContent = {
       { icon: 'museum', bg: '#FFF3E0', color: '#C58B43', title: "Alovuddin Muhammad II va Gurganch", text: "Muhammad II (1200–1220) 1210-yilda Qoraxitoylarni yengib Movarounnahrni qo'lga kiritdi. Poytaxt Ko'hna Urganch Sharqning eng boy va gavjum shahri bo'lib, Qutlug' Temur minorasi va me'moriy obidalar bilan bezaldi." },
       { icon: 'swords', bg: '#FEF2F2', color: '#DC2626', title: "Mo'g'ul bosqini va Urganch mudofaasi (1219–1221)", text: "1219-yilda Chingizxon qo'shinlari saroydagi ichki nizolardan foydalanib bostirib kirdi. Ko'hna Urganch aholisi 1221-yilda yetti oy davomida qahramonona qarshilik ko'rsatdi; mo'g'ullar Amudaryo to'g'onini buzib shaharni suvga bostirdilar." },
       { icon: 'shield', bg: '#E8F5EE', color: '#319568', title: "Jaloliddin Manguberdi (1220–1231)", text: "So'nggi Xorazmshoh Jaloliddin Manguberdi Parvon jangida mo'g'ullarni mag'lub etib, Hind daryosi bo'yi, Eron va Ozarbayjonda 11 yil davomida Chingizxon imperiyasiga qarshi mardonavor kurash olib bordi." },
+      { icon: 'scroll', bg: '#E0F7FA', color: '#0891B2', title: "So'fiylar sulolasi va Ko'hna Urganch tiklanishi (1359–1388)", text: "XIV asrda Oltin O'rda hokimi Qutlug' Temur davrida To'rabek Xonim maqbarasi va minora bunyod etildi. 1359–1388-yillarda Qo'ng'irot So'fiylar sulolasi (Husayn, Yusuf va Sulaymon So'fiy) mustaqil hokimiyat yuritib, 1388-yilda Amir Temur davlati tarkibiga kirdi." },
     ],
     rulersTitle: "Anushteginiylar sulolasining asosiy Xorazmshohlari",
     rulers: [
@@ -57,6 +58,7 @@ const shahsContent = {
       { icon: 'museum', bg: '#FFF3E0', color: '#C58B43', title: "Алауддин Мухаммад II и Гургандж", text: "В 1210 г. Мухаммад II отвоевал Мавераннахр у каракитаев. Столичный Гургандж (Куня-Ургенч) стал одним из богатейших городов исламского мира." },
       { icon: 'swords', bg: '#FEF2F2', color: '#DC2626', title: "Монгольское нашествие (1219–1221)", text: "В 1219 г. войска Чингисхана вторглись в ослабленную внутренними распрями державу. Жители Гурганджа героически оборонялись семь месяцев, пока монголы не разрушили плотину на Амударье." },
       { icon: 'shield', bg: '#E8F5EE', color: '#319568', title: "Джалаладдин Мангуберди (1220–1231)", text: "Последний Хорезмшах одержал победу над монголами при Парване и 11 лет продолжал сопротивление от берегов Инда до Кавказа и Азербайджана." },
+      { icon: 'scroll', bg: '#E0F7FA', color: '#0891B2', title: "Династия Суфиев и Амир Тимур (1359–1388)", text: "В XIV веке при Кутлуг-Тимуре возведены минарет и мавзолей Тюрабек-ханым, ставший усыпальницей кунгратской династии Суфиев (Хусейн, Юсуф и Сулейман Суфи), пока в 1388 г. Хорезм не вошёл в державу Амира Тимура." },
     ],
     rulersTitle: "Главные Хорезмшахи династии Ануштегинидов",
     rulers: [
@@ -91,6 +93,7 @@ const shahsContent = {
       { icon: 'museum', bg: '#FFF3E0', color: '#C58B43', title: "Muhammad II & Splendid Gurganj", text: "Muhammad II (1200–1220) reclaimed Transoxiana from the Qara Khitai in 1210, turning Old Urgench into a legendary metropolis of scholarship and tiled domes." },
       { icon: 'swords', bg: '#FEF2F2', color: '#DC2626', title: "Mongol Siege (1219–1221)", text: "Exploiting court divisions, Genghis Khan invaded in 1219. Citizens defended Gurganj fiercely for seven months in 1221 until Mongol forces breached the Amu Darya dykes." },
       { icon: 'shield', bg: '#E8F5EE', color: '#319568', title: "Jalal al-Din Manguberdi (1220–1231)", text: "Victory at Parwan and an extraordinary 11-year campaign across the Indus basin, Iran, and Azerbaijan cemented Jalal al-Din’s fame as an undaunted warrior-king." },
+      { icon: 'scroll', bg: '#E0F7FA', color: '#0891B2', title: "Sufid Dynasty & Amir Temur (1359–1388)", text: "Rebuilt under Qutlug Timur (Kutlug Timur Minaret & Turabek Khanum Mausoleum), Kunya-Urgench became seat of the Kungrat Sufid rulers (Husayn, Yusuf & Sulayman Sufi) until Amir Temur incorporated Khorezm in 1388." },
     ],
     rulersTitle: "Key Rulers of the Anushteginid Dynasty",
     rulers: [
@@ -131,8 +134,11 @@ export default function KhorezmshahsPage() {
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {content.kpis.map((k) => (
+          {content.kpis.map((k, idx) => (
             <div key={k.l} className="bg-white border border-[#E5EAF0] rounded-xl p-4 text-center">
+              <div className="w-9 h-9 rounded-lg bg-[#F7F9FC] flex items-center justify-center mx-auto mb-2">
+                <Icon3D name={['crown', 'map', 'book', 'museum'][idx] || 'crown'} alt={k.l} size={24} />
+              </div>
               <div className="font-bold text-[#15528B] text-base sm:text-lg">{k.v}</div>
               <div className="text-xs text-[#66758A] mt-0.5">{k.l}</div>
             </div>

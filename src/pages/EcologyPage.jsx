@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Wind, Droplets, Thermometer, AlertTriangle, ArrowRight, FileText, Download, CheckCircle, Leaf, Layers, TreePine, Waves } from 'lucide-react';
+import { ArrowRight, FileText, Download, CheckCircle } from 'lucide-react';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getEcologyData } from '../data/ecology';
 import { useLanguage } from '../hooks/useLanguage';
@@ -41,18 +41,19 @@ export default function EcologyPage() {
       : data.monthlyAirQuality;
 
   const sidebarItems = [
-    { label: ec.aboutTitle, href: '#about', icon: Leaf },
-    { label: ec.indicatorsTitle, href: '#monitoring', icon: Wind },
-    { label: ec.issuesTitle, href: '#issues', icon: AlertTriangle },
-    { label: ec.aralTitle, href: '#aral', icon: Waves },
-    { label: ec.projectsTitle, href: '#projects', icon: TreePine },
+    { label: ec.aboutTitle, href: '#about', icon: 'leaf' },
+    { label: ec.indicatorsTitle, href: '#monitoring', icon: 'wind' },
+    { label: ec.issuesTitle, href: '#issues', icon: 'warning' },
+    { label: ec.aralTitle, href: '#aral', icon: 'waves' },
+    { label: ec.projectsTitle, href: '#projects', icon: 'tree' },
   ];
 
-  const periods = language === 'ru'
-    ? [{ k: 'now', l: 'Сейчас' }, { k: '24h', l: '24 часа' }, { k: '7d', l: '7 дней' }, { k: '30d', l: '30 дней' }]
-    : language === 'en'
-      ? [{ k: 'now', l: 'Now' }, { k: '24h', l: '24h' }, { k: '7d', l: '7 days' }, { k: '30d', l: '30 days' }]
-      : [{ k: 'now', l: 'Hozirgi' }, { k: '24h', l: '24 soat' }, { k: '7d', l: '7 kun' }, { k: '30d', l: '30 kun' }];
+  const periods =
+    language === 'ru'
+      ? [{ k: 'now', l: 'Сейчас' }, { k: '24h', l: '24 часа' }, { k: '7d', l: '7 дней' }, { k: '30d', l: '30 дней' }]
+      : language === 'en'
+        ? [{ k: 'now', l: 'Now' }, { k: '24h', l: '24h' }, { k: '7d', l: '7 days' }, { k: '30d', l: '30 days' }]
+        : [{ k: 'now', l: 'Hozirgi' }, { k: '24h', l: '24 soat' }, { k: '7d', l: '7 kun' }, { k: '30d', l: '30 kun' }];
 
   const issuePhotos = [
     '/images/aral-crisis.jpg',
@@ -63,32 +64,65 @@ export default function EcologyPage() {
   ];
 
   const wealthCards = [
-    { img: '/images/amudarya-oasis.jpg', title: t.nav.waterResources },
-    { img: '/images/soil-oasis.jpg', title: t.nav.soil },
-    { img: '/images/flora-gazelle.jpg', title: t.nav.floraFauna },
-    { img: '/images/kyzylkum-desert.jpg', title: t.pages.geography.reliefTitle },
+    { img: '/images/amudarya-oasis.jpg', title: t.nav.waterResources, href: '/geografiya/suv-resurslari' },
+    { img: '/images/soil-oasis.jpg', title: t.nav.soil, href: '/geografiya/tuproq' },
+    { img: '/images/flora-gazelle.jpg', title: t.nav.floraFauna, href: '/geografiya/flora-fauna' },
+    { img: '/images/kyzylkum-desert.jpg', title: t.pages.geography.reliefTitle, href: '/geografiya/iqlim' },
   ];
 
-  const reports = language === 'ru'
-    ? [
-        { name: 'Экологический отчёт Хорезма (2024)', size: '2.8 MB' },
-        { name: 'Мониторинг качества воздуха (2024)', size: '1.9 MB' },
-        { name: 'Анализ водных ресурсов', size: '2.4 MB' },
-        { name: 'Справка по засолению почв', size: '3.1 MB' },
-      ]
-    : language === 'en'
+  const reports =
+    language === 'ru'
       ? [
-          { name: 'Khorezm State of Environment Report (2024)', size: '2.8 MB' },
-          { name: 'Air Quality Monitoring Results (2024)', size: '1.9 MB' },
-          { name: 'Water Resources & Usage Review', size: '2.4 MB' },
-          { name: 'Soil Salinization Assessment', size: '3.1 MB' },
+          { slug: 'khorezm-ecology-summary', name: 'Экологический обзор Хорезма (2024–2025)', size: 'TXT' },
+          { slug: 'khorezm-air-quality', name: 'Мониторинг воздуха — Ургенч (Open-Meteo)', size: 'TXT' },
+          { slug: 'sarimoy-solar-es', name: 'СЭС Сарымой 126 МВт и агровольтаика', size: 'TXT' },
+          { slug: 'soil-water-overview', name: 'Справка по засолению почв и орошению', size: 'TXT' },
         ]
-      : [
-          { name: 'Xorazm viloyati atrof-muhit holati hisoboti (2024)', size: '2.8 MB' },
-          { name: 'Havo sifati monitoringi natijalari (2024)', size: '1.9 MB' },
-          { name: 'Suv resurslari va foydalanish tahlili', size: '2.4 MB' },
-          { name: "Tuproq sho'rlanishi bo'yicha ma'lumotnoma", size: '3.1 MB' },
-        ];
+      : language === 'en'
+        ? [
+            { slug: 'khorezm-ecology-summary', name: 'Khorezm Ecology Overview (2024–2025)', size: 'TXT' },
+            { slug: 'khorezm-air-quality', name: 'Urgench Live Air Quality Summary (Open-Meteo)', size: 'TXT' },
+            { slug: 'sarimoy-solar-es', name: 'Sarimoy 126 MW Solar Plant & Agrivoltaics', size: 'TXT' },
+            { slug: 'soil-water-overview', name: 'Soil Salinity & Irrigation Review', size: 'TXT' },
+          ]
+        : [
+            { slug: 'khorezm-ecology-summary', name: 'Xorazm ekologik holati ma’lumotnomasi (2024–2025)', size: 'TXT' },
+            { slug: 'khorezm-air-quality', name: 'Urganch havo sifati hisoboti (Open-Meteo)', size: 'TXT' },
+            { slug: 'sarimoy-solar-es', name: 'Sarimoy 126 MVt quyosh stansiyasi va agrovoltaika', size: 'TXT' },
+            { slug: 'soil-water-overview', name: "Tuproq sho'rlanishi va suv tejash tahlili", size: 'TXT' },
+          ];
+
+  const reportsHeading =
+    language === 'ru' ? 'Экологические справки' : language === 'en' ? 'Environmental Fact Sheets' : "Ekologik ma'lumotnomalar";
+
+  const handleDownloadReport = (rep) => {
+    const content = [
+      `my-khorezm.uz — ${rep.name}`,
+      '====================================================',
+      '',
+      data.overview,
+      '',
+      `${ec.indicatorsTitle}:`,
+      ...data.keyStats.map((k) => `- ${k.l}: ${k.v}`),
+      '',
+      `Live Urgench Telemetry (Open-Meteo):`,
+      `- Temp: ${formatTemp(temperature)} | Humidity: ${humidity}% | Wind: ${windSpeed} m/s`,
+      `- PM2.5: ${pm25} ug/m3 | PM10: ${pm10} ug/m3 | AQI: ${aqi}`,
+      '',
+      `${ec.projectsTitle}:`,
+      ...data.greenProjects.map((p) => `- ${p.title}: ${p.desc}`),
+    ].join('\n');
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${rep.slug}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
 
   return (
     <>
@@ -114,7 +148,7 @@ export default function EcologyPage() {
                       idx === 0 ? 'bg-[#15528B] text-white' : 'text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]'
                     }`}
                   >
-                    <item.icon size={14} className="shrink-0" />
+                    <Icon3D name={item.icon} size={17} />
                     <span className="truncate">{item.label}</span>
                   </a>
                 ))}
@@ -127,7 +161,10 @@ export default function EcologyPage() {
             <div className="grid grid-cols-1 xl:grid-cols-12 gap-4" id="about">
               <div className="xl:col-span-8 bg-white border border-[#E5EAF0] rounded-2xl p-5 flex flex-col sm:flex-row gap-4 items-center">
                 <div className="flex-1">
-                  <h2 className="font-bold text-[#17243B] text-base mb-2">{ec.aboutTitle}</h2>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon3D name="leaf" size={20} />
+                    <h2 className="font-bold text-[#17243B] text-base">{ec.aboutTitle}</h2>
+                  </div>
                   <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-3">{data.overview}</p>
                   <a href="#monitoring" className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#15528B] bg-[#F7F9FC] border border-[#E5EAF0] px-3.5 py-2 rounded-lg">
                     {t.common.readMore} →
@@ -137,7 +174,10 @@ export default function EcologyPage() {
               </div>
 
               <div className="xl:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5">
-                <h3 className="font-bold text-[#17243B] text-sm mb-3">{ec.indicatorsTitle}</h3>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon3D name="chart" size={18} />
+                  <h3 className="font-bold text-[#17243B] text-sm">{ec.indicatorsTitle}</h3>
+                </div>
                 {data.keyStats.map((i) => (
                   <div key={i.l} className="flex justify-between py-2 border-b border-[#F7F9FC] last:border-0 text-xs">
                     <span className="text-[#66758A]">{i.l}</span>
@@ -151,6 +191,7 @@ export default function EcologyPage() {
             <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5" id="monitoring">
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <h2 className="font-bold text-[#17243B] text-sm sm:text-base flex items-center gap-2 flex-wrap">
+                  <Icon3D name="wind" size={20} />
                   <span>{ec.monitoringTitle}</span>
                   <span className="inline-flex items-center gap-1 text-xs font-medium text-[#319568]">
                     {isLive && <span className="w-1.5 h-1.5 rounded-full bg-[#319568] animate-pulse" />}
@@ -232,7 +273,10 @@ export default function EcologyPage() {
 
             {/* 5 Issues */}
             <div id="issues">
-              <h2 className="font-bold text-[#17243B] text-base mb-3">{ec.issuesTitle}</h2>
+              <div className="flex items-center gap-2 mb-3">
+                <Icon3D name="warning" size={20} />
+                <h2 className="font-bold text-[#17243B] text-base">{ec.issuesTitle}</h2>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                 {data.issues.map((issue, idx) => (
                   <div key={issue.id} className="bg-white border border-[#E5EAF0] rounded-2xl overflow-hidden group hover:shadow-md transition-shadow">
@@ -278,7 +322,10 @@ export default function EcologyPage() {
               </div>
 
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5" id="projects">
-                <h2 className="font-bold text-[#17243B] text-sm mb-3">{ec.projectsTitle}</h2>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon3D name="tree" size={19} />
+                  <h2 className="font-bold text-[#17243B] text-sm">{ec.projectsTitle}</h2>
+                </div>
                 <ul className="space-y-2">
                   {data.greenProjects.map((p) => (
                     <li key={p.id} className="flex items-start gap-2 text-xs text-[#66758A]">
@@ -292,33 +339,44 @@ export default function EcologyPage() {
               </div>
             </div>
 
-            {/* Natural Wealth + PDF Reports */}
+            {/* Natural Wealth + Downloadable Fact Sheets */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5">
-                <h2 className="font-bold text-[#17243B] text-sm mb-3">{t.pages.geography.resourcesTitle}</h2>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon3D name="globe" size={18} />
+                  <h2 className="font-bold text-[#17243B] text-sm">{t.pages.geography.resourcesTitle}</h2>
+                </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                   {wealthCards.map((w) => (
-                    <div key={w.title} className="border border-[#E5EAF0] rounded-xl overflow-hidden">
+                    <Link key={w.title} to={w.href} className="border border-[#E5EAF0] rounded-xl overflow-hidden hover:shadow-xs transition-shadow">
                       <img src={w.img} alt={w.title} className="w-full h-16 object-cover" />
                       <div className="p-2 text-[11px] font-semibold text-[#17243B] text-center truncate">{w.title}</div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
 
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5">
-                <h2 className="font-bold text-[#17243B] text-sm mb-3">{ec.indicatorsTitle}</h2>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon3D name="book" size={18} />
+                  <h2 className="font-bold text-[#17243B] text-sm">{reportsHeading}</h2>
+                </div>
                 <div className="space-y-2">
                   {reports.map((rep) => (
-                    <div key={rep.name} className="flex items-center justify-between p-2 rounded-xl bg-[#F7F9FC] border border-[#E5EAF0] text-xs">
+                    <button
+                      key={rep.slug}
+                      type="button"
+                      onClick={() => handleDownloadReport(rep)}
+                      className="w-full flex items-center justify-between p-2 rounded-xl bg-[#F7F9FC] border border-[#E5EAF0] hover:border-[#15528B]/40 hover:bg-[#EBF3FA]/50 text-xs transition-colors cursor-pointer"
+                    >
                       <span className="flex items-center gap-2 text-[#17243B] truncate">
                         <FileText size={14} className="text-[#DC2626] shrink-0" />
                         <span className="truncate">{rep.name}</span>
                       </span>
-                      <span className="flex items-center gap-1.5 text-[#66758A] shrink-0 ml-2">
-                        {rep.size} <Download size={13} className="text-[#15528B]" />
+                      <span className="flex items-center gap-1.5 text-[#15528B] font-semibold shrink-0 ml-2">
+                        {rep.size} <Download size={13} />
                       </span>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>

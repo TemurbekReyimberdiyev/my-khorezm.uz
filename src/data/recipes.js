@@ -16,7 +16,7 @@
       ingredients: ['500 g un', '3 dona tuxum', '200 g yangi shivit (ukrop)', "300 g mol go'shti", '2 dona piyoz', '3 dona pomidor', 'Tuz, zira, qora murch'],
       steps: [
         "Shivit sharbatini tayyorlang: yangi shivitni ozgina suv bilan maydalab, suzib oling.",
-        "Unni tuxum, tuz va shivit sharbati bilan qorib, qattiqroq yashil xamir yoğing.",
+        "Unni tuxum, tuz va shivit sharbati bilan qorib, qattiqroq yashil xamir yo'g'ring.",
         "Xamirni yupqa yoyib, ingichka uzun lag'mon shaklida kesing va tuzli suvda pishiring.",
         "Go'shtni piyoz, pomidor va ziravorlar bilan qovurib, quyuq qayla (sous) tayyorlang.",
         "Suzilgan yashil lag'mon ustiga qaynoq qayla va qatiq qo'shib torting.",

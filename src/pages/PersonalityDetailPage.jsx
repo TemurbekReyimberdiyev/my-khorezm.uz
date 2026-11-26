@@ -1,10 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { getPersonalities } from '../data/personalities';
 import { useLanguage } from '../hooks/useLanguage';
 import Badge from '../components/common/Badge';
 import PagePathBar from '../components/common/PagePathBar';
+import Icon3D from '../components/common/Icon3D';
 
 export default function PersonalityDetailPage() {
   const { slug } = useParams();
@@ -39,31 +40,48 @@ export default function PersonalityDetailPage() {
               <p className="text-sm text-[#66758A]">{person.fullName}</p>
               <p className="text-sm font-semibold text-[#15528B] mt-2">{person.years}</p>
               <p className="text-xs text-[#66758A] mt-1">{person.role}</p>
+              <Link
+                to="/shaxslar"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#15528B] bg-[#F7F9FC] border border-[#E5EAF0] px-3.5 py-2 rounded-xl hover:bg-[#EBF3FA]"
+              >
+                <ArrowLeft size={13} /> {t.common.back}
+              </Link>
             </div>
           </div>
 
           <div className="md:col-span-2 space-y-5">
             <div className="bg-white border border-[#E5EAF0] rounded-2xl p-6">
-              <h2 className="font-bold text-[#17243B] mb-3">{pText.bioTitle}</h2>
+              <div className="flex items-center gap-2 mb-3">
+                <Icon3D name="history" size={20} />
+                <h2 className="font-bold text-[#17243B]">{pText.bioTitle}</h2>
+              </div>
               <p className="text-sm text-[#66758A] leading-relaxed">{person.fullBio}</p>
             </div>
             <div className="bg-white border border-[#E5EAF0] rounded-2xl p-6">
-              <h2 className="font-bold text-[#17243B] mb-3">{pText.achievementsTitle}</h2>
+              <div className="flex items-center gap-2 mb-3">
+                <Icon3D name="award" size={20} />
+                <h2 className="font-bold text-[#17243B]">{pText.achievementsTitle}</h2>
+              </div>
               <ul className="space-y-2">
                 {person.achievements.map((a, i) => (
-                  <li key={i} className="text-sm text-[#66758A] flex gap-2">
-                    <span className="text-[#319568] font-bold">✓</span> {a}
+                  <li key={i} className="text-sm text-[#66758A] flex items-start gap-2">
+                    <CheckCircle size={15} className="text-[#319568] shrink-0 mt-0.5" />
+                    <span>{a}</span>
                   </li>
                 ))}
               </ul>
             </div>
             {person.works?.length > 0 && (
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-6">
-                <h2 className="font-bold text-[#17243B] mb-3">{pText.worksTitle}</h2>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon3D name="book" size={20} />
+                  <h2 className="font-bold text-[#17243B]">{pText.worksTitle}</h2>
+                </div>
                 <ul className="space-y-2">
                   {person.works.map((w, i) => (
-                    <li key={i} className="text-sm text-[#66758A] flex gap-2">
-                      <span className="text-[#C58B43]">📖</span> {w}
+                    <li key={i} className="text-sm text-[#66758A] flex items-start gap-2.5">
+                      <Icon3D name="scroll" size={16} className="mt-0.5" />
+                      <span>{w}</span>
                     </li>
                   ))}
                 </ul>

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, ChevronRight, CheckCircle } from 'lucide-react';
+import { ChevronRight, CheckCircle } from 'lucide-react';
 import { getAttractions } from '../data/attractions';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
@@ -9,44 +9,68 @@ import Icon3D from '../components/common/Icon3D';
 
 const itinerariesByLang = {
   uz: [
-    { days: '1 kunlik', photo: '/images/amudarya-oasis.jpg', title: "Xiva bo'ylab sayohat", objects: "5 ta ob'ekt", time: '~8 soat' },
-    { days: '2 kunlik', photo: '/images/ancient-fortress.jpg', title: 'Xorazmning tarixiy merosi', objects: "8 ta ob'ekt", time: '2 kun' },
-    { days: '3 kunlik', photo: '/images/kyzylkum-desert.jpg', title: 'Tarix, tabiat va madaniyat', objects: "12 ta ob'ekt", time: '3 kun' },
+    { days: '1 kunlik', photo: '/images/amudarya-oasis.jpg', title: "Ichan-Qal'a va Arda Xiva", objects: "6 ta ob'ekt", time: '~8 soat' },
+    { days: '2 kunlik', photo: '/images/ancient-fortress.jpg', title: 'Xiva va qadimiy qal’alar', objects: "9 ta ob'ekt", time: '2 kun' },
+    { days: '3 kunlik', photo: '/images/kyzylkum-desert.jpg', title: 'Tarix, Qizilqum va Amudaryo', objects: "12+ ob'ekt", time: '3 kun' },
   ],
   ru: [
-    { days: '1 день', photo: '/images/amudarya-oasis.jpg', title: 'Прогулка по Хиве', objects: '5 объектов', time: '~8 часов' },
-    { days: '2 дня', photo: '/images/ancient-fortress.jpg', title: 'Историческое наследие Хорезма', objects: '8 объектов', time: '2 дня' },
-    { days: '3 дня', photo: '/images/kyzylkum-desert.jpg', title: 'История, природа и культура', objects: '12 объектов', time: '3 дня' },
+    { days: '1 день', photo: '/images/amudarya-oasis.jpg', title: 'Ичан-Кала и Арда Хива', objects: '6 объектов', time: '~8 часов' },
+    { days: '2 дня', photo: '/images/ancient-fortress.jpg', title: 'Хива и древние крепости', objects: '9 объектов', time: '2 дня' },
+    { days: '3 дня', photo: '/images/kyzylkum-desert.jpg', title: 'История, Кызылкум и Амударья', objects: '12+ объектов', time: '3 дня' },
   ],
   en: [
-    { days: '1-Day', photo: '/images/amudarya-oasis.jpg', title: 'Highlights of Khiva', objects: '5 sites', time: '~8 hours' },
-    { days: '2-Day', photo: '/images/ancient-fortress.jpg', title: 'Historic Treasures of Khorezm', objects: '8 sites', time: '2 days' },
-    { days: '3-Day', photo: '/images/kyzylkum-desert.jpg', title: 'History, Desert & Culture', objects: '12 sites', time: '3 days' },
+    { days: '1-Day', photo: '/images/amudarya-oasis.jpg', title: 'Ichan-Kala & Arda Khiva', objects: '6 sites', time: '~8 hours' },
+    { days: '2-Day', photo: '/images/ancient-fortress.jpg', title: 'Khiva & Desert Fortresses', objects: '9 sites', time: '2 days' },
+    { days: '3-Day', photo: '/images/kyzylkum-desert.jpg', title: 'Heritage, Desert & Amu Darya', objects: '12+ sites', time: '3 days' },
   ],
 };
 
 const eventsByLang = {
   uz: [
-    { title: 'Xorazm Lazgi festivali', date: 'May, 2025', photo: '/images/lazgi-dance.jpg' },
-    { title: "Ichan-Qal'a hunarmandchilik festivali", date: 'Sentabr, 2025', photo: '/images/khorezm-crafts.jpg' },
-    { title: 'Xorazm taomlari festivali', date: 'Oktabr, 2025', photo: '/images/khorezm-cuisine.jpg' },
+    { title: 'Xalqaro «Lazgi» raqs festivali', date: 'Aprel–May, 2026 (har 2 yilda)', photo: '/images/lazgi-dance.jpg' },
+    { title: '«Qovun sayli» gastronomik festivali', date: 'Avgust (8–10-avgust)', photo: '/images/khorezm-cuisine.jpg' },
+    { title: "«Ichan-Qal'a» hunarmandchilik festivali", date: 'Sentabr, har yili', photo: '/images/khorezm-crafts.jpg' },
   ],
   ru: [
-    { title: 'Фестиваль «Лазги»', date: 'Май, 2025', photo: '/images/lazgi-dance.jpg' },
-    { title: 'Фестиваль ремёсел в Ичан-Кале', date: 'Сентябрь, 2025', photo: '/images/khorezm-crafts.jpg' },
-    { title: 'Фестиваль хорезмской кухни', date: 'Октябрь, 2025', photo: '/images/khorezm-cuisine.jpg' },
+    { title: 'Международный фестиваль «Лазги»', date: 'Апрель–Май, 2026 (раз в 2 года)', photo: '/images/lazgi-dance.jpg' },
+    { title: 'Фестиваль дынь «Ковун сайли»', date: 'Август (8–10 августа)', photo: '/images/khorezm-cuisine.jpg' },
+    { title: 'Фестиваль ремёсел в Ичан-Кале', date: 'Сентябрь, ежегодно', photo: '/images/khorezm-crafts.jpg' },
   ],
   en: [
-    { title: 'Khorezm Lazgi Festival', date: 'May, 2025', photo: '/images/lazgi-dance.jpg' },
-    { title: 'Ichan-Kala Crafts Festival', date: 'September, 2025', photo: '/images/khorezm-crafts.jpg' },
-    { title: 'Khorezm Culinary Festival', date: 'October, 2025', photo: '/images/khorezm-cuisine.jpg' },
+    { title: 'International Lazgi Dance Festival', date: 'April–May, 2026 (Biennial)', photo: '/images/lazgi-dance.jpg' },
+    { title: 'Qovun Sayli Melon & Food Festival', date: 'August (Aug 8–10)', photo: '/images/khorezm-cuisine.jpg' },
+    { title: 'Ichan-Kala Artisans Festival', date: 'September, Annual', photo: '/images/khorezm-crafts.jpg' },
   ],
 };
 
 const tipsByLang = {
-  uz: { title: 'Sayohatchilar uchun ma’lumot', items: ['Qanday borish mumkin?', 'Qayerda yashash?', 'Nima ko‘rish kerak?', 'Foydali maslahatlar'] },
-  ru: { title: 'Памятка путешественнику', items: ['Как добраться?', 'Где остановиться?', 'Что посмотреть?', 'Полезные советы'] },
-  en: { title: 'Traveler Essentials', items: ['How to get here?', 'Where to stay?', 'Top sights to see', 'Practical travel tips'] },
+  uz: {
+    title: 'Sayohatchilar uchun amaliy ma’lumot',
+    items: [
+      'Urganch aeroporti (UGC) va Xiva temir yo‘l vokzali',
+      'Urganch–Xiva trolleybusi va zamonaviy avtobuslar',
+      'Ichan-Qal’a va Dishan-Qal’adagi 150+ mehmonxonalar',
+      'Eng qulay mavsum: mart–iyun va sentabr–noyabr',
+    ],
+  },
+  ru: {
+    title: 'Полезно путешественнику',
+    items: [
+      'Международный аэропорт Ургенч (UGC) и вокзал Хивы',
+      'Троллейбусная линия Ургенч–Хива (30 км)',
+      'Свыше 150 отелей и гостевых домов в Хиве и Ургенче',
+      'Лучший сезон: март–июнь и сентябрь–ноябрь',
+    ],
+  },
+  en: {
+    title: 'Practical Traveler Essentials',
+    items: [
+      'Urgench Int’l Airport (UGC) & direct Khiva rail station',
+      'Electric trolleybus & frequent shuttle along Urgench–Khiva',
+      '150+ hotels, boutique madrasas & guesthouses',
+      'Best seasons: March–June and September–November',
+    ],
+  },
 };
 
 export default function TourismPage() {
@@ -112,7 +136,10 @@ export default function TourismPage() {
             <div className="grid grid-cols-1 xl:grid-cols-12 gap-4" id="about">
               <div className="xl:col-span-8 bg-white border border-[#E5EAF0] rounded-2xl p-5 flex flex-col sm:flex-row gap-4 items-center">
                 <div className="flex-1">
-                  <h2 className="font-bold text-[#17243B] text-base mb-2">{tur.title}</h2>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon3D name="compass" size={20} />
+                    <h2 className="font-bold text-[#17243B] text-base">{tur.title}</h2>
+                  </div>
                   <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-4">{tur.subtitle}</p>
                   <Link
                     to="/turizm/ichan-qala"
@@ -125,7 +152,10 @@ export default function TourismPage() {
               </div>
 
               <div className="xl:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5">
-                <h3 className="font-bold text-[#17243B] text-sm mb-3">{t.home.statsTitle}</h3>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon3D name="chart" size={18} />
+                  <h3 className="font-bold text-[#17243B] text-sm">{t.home.statsTitle}</h3>
+                </div>
                 {tur.stats.map((i) => (
                   <div key={i.l} className="flex justify-between py-2 border-b border-[#F7F9FC] last:border-0 text-xs">
                     <span className="text-[#66758A]">{i.l}</span>
@@ -138,7 +168,10 @@ export default function TourismPage() {
             {/* Attractions */}
             <div id="attractions">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                <h2 className="font-bold text-[#17243B] text-base sm:text-lg">{tur.popularTitle}</h2>
+                <div className="flex items-center gap-2">
+                  <Icon3D name="museum" size={20} />
+                  <h2 className="font-bold text-[#17243B] text-base sm:text-lg">{tur.popularTitle}</h2>
+                </div>
                 <div className="flex gap-1.5 overflow-x-auto pb-1">
                   {categories.map((c) => (
                     <button
@@ -173,7 +206,7 @@ export default function TourismPage() {
                       <div className="p-3.5">
                         <h3 className="font-bold text-[#17243B] text-sm">{a.name}</h3>
                         <p className="text-[11px] text-[#66758A] flex items-center gap-1 mt-1">
-                          <MapPin size={10} /> {a.location}
+                          <Icon3D name="map-pin" size={13} /> {a.location}
                         </p>
                         <p className="text-xs text-[#66758A] leading-snug mt-2 line-clamp-2">{a.description}</p>
                       </div>
@@ -192,7 +225,10 @@ export default function TourismPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch" id="routes">
               <div className="lg:col-span-3 bg-white border border-[#E5EAF0] rounded-2xl p-5 flex flex-col justify-between">
                 <div>
-                  <h2 className="font-bold text-[#17243B] text-base mb-2">{tur.itinerariesTitle}</h2>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon3D name="map" size={19} />
+                    <h2 className="font-bold text-[#17243B] text-base">{tur.itinerariesTitle}</h2>
+                  </div>
                   <p className="text-xs text-[#66758A] leading-relaxed">{tur.itinerariesSubtitle}</p>
                 </div>
                 <Link to="/xarita" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[#15528B] bg-[#F7F9FC] border border-[#E5EAF0] px-3.5 py-2 rounded-lg w-fit">
@@ -224,7 +260,10 @@ export default function TourismPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch" id="events">
               <div className="lg:col-span-3 bg-white border border-[#E5EAF0] rounded-2xl p-5 flex flex-col justify-between">
                 <div>
-                  <h2 className="font-bold text-[#17243B] text-base mb-2">{tur.eventsTitle}</h2>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon3D name="star" size={19} />
+                    <h2 className="font-bold text-[#17243B] text-base">{tur.eventsTitle}</h2>
+                  </div>
                   <p className="text-xs text-[#66758A] leading-relaxed">{tur.subtitle}</p>
                 </div>
                 <Link to="/yangiliklar" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[#15528B] bg-[#F7F9FC] border border-[#E5EAF0] px-3.5 py-2 rounded-lg w-fit">
@@ -237,8 +276,8 @@ export default function TourismPage() {
                     <img src={e.photo} alt={e.title} className="w-full h-28 object-cover" />
                     <div className="p-3.5">
                       <h3 className="font-bold text-[#17243B] text-sm">{e.title}</h3>
-                      <p className="text-xs text-[#66758A] mt-1 flex items-center gap-1">
-                        <Clock size={11} /> {e.date}
+                      <p className="text-xs text-[#66758A] mt-1 flex items-center gap-1.5">
+                        <Icon3D name="calendar" size={14} /> {e.date}
                       </p>
                     </div>
                   </div>
@@ -251,14 +290,14 @@ export default function TourismPage() {
               <h2 className="font-bold text-lg mb-3">{tips.title}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                 {tips.items.map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-xs text-white/90">
-                    <CheckCircle size={14} className="text-[#4ADE80] shrink-0" />
+                  <div key={item} className="flex items-start gap-2 text-xs text-white/90">
+                    <CheckCircle size={14} className="text-[#4ADE80] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
               <Link to="/xarita" className="inline-flex items-center gap-1.5 bg-white text-[#15528B] px-4 py-2 rounded-xl text-xs font-semibold hover:bg-[#F7F9FC]">
-                {t.common.readMore} →
+                {t.home.mapOpen} →
               </Link>
             </div>
           </div>

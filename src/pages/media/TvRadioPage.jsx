@@ -16,7 +16,6 @@ import {
   MapPin,
   Video,
   Send,
-  Layers,
   Calendar,
   ArrowLeft,
   AlertCircle,
@@ -25,6 +24,7 @@ import {
 import { getTvChannels, getRadioStations, getXorazmPrograms } from '../../data/broadcasts';
 import { useLanguage } from '../../hooks/useLanguage';
 import PageHero from '../../components/common/PageHero';
+import Icon3D from '../../components/common/Icon3D';
 
 function LiveTvPlayer({ channel, labels, isMuted, volume, onToggleMute, onVolumeChange, onPlayingChange }) {
   const videoRef = useRef(null);
@@ -422,10 +422,10 @@ export default function TvRadioPage() {
   };
 
   const sidebarItems = [
-    { k: 'all', l: tr.sidebar.all, icon: Layers },
-    { k: 'tv', l: tr.sidebar.tv, icon: Tv },
-    { k: 'radio', l: tr.sidebar.radio, icon: Radio },
-    { k: 'programs', l: tr.sidebar.programs, icon: Calendar },
+    { k: 'all', l: tr.sidebar.all, icon: 'layers' },
+    { k: 'tv', l: tr.sidebar.tv, icon: 'tv' },
+    { k: 'radio', l: tr.sidebar.radio, icon: 'headphones' },
+    { k: 'programs', l: tr.sidebar.programs, icon: 'calendar' },
   ];
 
   const showTv = section === 'all' || section === 'tv';
@@ -475,7 +475,7 @@ export default function TvRadioPage() {
                       : 'text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]'
                   }`}
                 >
-                  <it.icon size={14} className="shrink-0" />
+                  <Icon3D name={it.icon} size={17} />
                   <span className="truncate">{it.l}</span>
                 </button>
               ))}
@@ -507,7 +507,7 @@ export default function TvRadioPage() {
                       : 'bg-white border border-[#E5EAF0] text-[#66758A]'
                   }`}
                 >
-                  <it.icon size={13} />
+                  <Icon3D name={it.icon} size={15} />
                   <span>{it.l}</span>
                 </button>
               ))}
@@ -520,7 +520,7 @@ export default function TvRadioPage() {
                   <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                     <div className="flex items-center gap-2.5">
                       <div className="w-9 h-9 rounded-xl bg-[#EBF3FA] text-[#15528B] flex items-center justify-center">
-                        <Tv size={18} />
+                        <Icon3D name="tv" size={22} />
                       </div>
                       <div>
                         <h2 className="font-bold text-[#17243B] text-base">{tr.tvSectionTitle}</h2>
