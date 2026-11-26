@@ -33,7 +33,7 @@ export default function PersonalityDetailPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-1">
             <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5 text-center">
-              <img src={person.photo} alt={person.name} className="w-32 h-32 rounded-full object-cover mx-auto border-4 border-[#EBF3FA] mb-4" />
+              <img src={person.photo} alt={person.name} className="w-32 h-32 rounded-full object-cover object-top mx-auto border-4 border-[#EBF3FA] mb-4" />
               <Badge variant="primary" className="mb-2">{person.category}</Badge>
               <h1 className="font-bold text-[#17243B] text-lg mt-2">{person.name}</h1>
               <p className="text-sm text-[#66758A]">{person.fullName}</p>

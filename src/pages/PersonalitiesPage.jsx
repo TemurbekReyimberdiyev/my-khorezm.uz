@@ -76,7 +76,7 @@ export default function PersonalitiesPage() {
               <img
                 src={p.photo}
                 alt={p.name}
-                className="w-20 h-20 rounded-full object-cover shrink-0 border-2 border-[#E5EAF0] group-hover:border-[#15528B] transition-colors"
+                className="w-20 h-20 rounded-full object-cover object-top shrink-0 border-2 border-[#E5EAF0] group-hover:border-[#15528B] transition-colors"
               />
               <div className="min-w-0">
                 <Badge variant="primary" className="text-[10px] mb-2">

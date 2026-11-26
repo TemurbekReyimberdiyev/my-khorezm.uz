@@ -124,7 +124,7 @@ const personalitiesRaw = [
     slug: 'pahlavon-mahmud',
     years: '1247–1326',
     categoryKey: 'poets',
-    photo: '/images/portrait-pahlavon.svg',
+    photo: '/images/portrait-pahlavon.jpg',
     uz: {
       name: 'Pahlavon Mahmud',
       fullName: 'Pahlavon Mahmud Puryorvali',
@@ -164,7 +164,7 @@ const personalitiesRaw = [
     slug: 'munis-xorazmiy',
     years: '1778–1829',
     categoryKey: 'poets',
-    photo: '/images/portrait-munis.svg',
+    photo: '/images/portrait-munis.jpg',
     uz: {
       name: 'Munis Xorazmiy',
       fullName: 'Shermuhammad Munis',
@@ -204,7 +204,7 @@ const personalitiesRaw = [
     slug: 'ogahiy',
     years: '1809–1874',
     categoryKey: 'poets',
-    photo: '/images/portrait-ogahiy.svg',
+    photo: '/images/portrait-ogahiy.jpg',
     uz: {
       name: 'Ogahiy',
       fullName: "Muhammad Rizo Erniyozbek o'g'li Ogahiy",
@@ -244,7 +244,7 @@ const personalitiesRaw = [
     slug: 'jaloliddin-manguberdi',
     years: '1199–1231',
     categoryKey: 'statesmen',
-    photo: '/images/portrait-jaloliddin.svg',
+    photo: '/images/portrait-jaloliddin.jpg',
     uz: {
       name: 'Jaloliddin Manguberdi',
       fullName: 'Sulton Jaloliddin Manguberdi',

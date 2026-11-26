@@ -30,7 +30,7 @@ export default function PersonalitiesStrip() {
             {people.slice(0, 6).map((p) => (
               <Link key={p.id} to={`/shaxslar/${p.slug}`} className="flex flex-col items-center gap-2 group">
                 <div className="w-full aspect-square rounded-xl overflow-hidden border border-[#E5EAF0] bg-[#FAF6EF] group-hover:border-[#15528B] transition-colors">
-                  <img src={p.photo} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src={p.photo} alt={p.name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <span className="text-xs text-[#17243B] font-semibold text-center leading-tight line-clamp-2 group-hover:text-[#15528B]">
                   {p.name}
