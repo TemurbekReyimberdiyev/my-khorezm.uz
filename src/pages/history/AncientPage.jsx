@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Compass, Layers, Landmark, Coins, ArrowLeft, ArrowRight, ZoomIn } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ZoomIn } from 'lucide-react';
 import { useLanguage } from '../../hooks/useLanguage';
 import PageHero from '../../components/common/PageHero';
 import ImageLightbox from '../../components/common/ImageLightbox';
+import Icon3D from '../../components/common/Icon3D';
 
 const ancientData = {
   uz: {
@@ -19,28 +20,28 @@ const ancientData = {
     phasesTitle: "Arxeologik davrlar va davlatchilik bosqichlari",
     phases: [
       {
-        icon: Layers,
+        icon: 'layers',
         color: '#15528B',
         bg: '#EBF3FA',
         title: "Kaltaminor, Tozabog'yop va Amirobod madaniyatlari",
         text: "Amudaryoning Oqchadaryo deltasida mil. avv. IV–III ming yilliklarda ovchilik va baliqchilik bilan shug'ullangan Kaltaminor madaniyati, mil. avv. II ming yillikda Tozabog'yop va Suvyorgan qabilalari, IX–VIII asrlarda esa yirik sug'orma kanallar qurgan Amirobod madaniyati shakllangan.",
       },
       {
-        icon: Compass,
+        icon: 'compass',
         color: '#C58B43',
         bg: '#FFF3E0',
         title: "Ahamoniylar XVI satrapligi va Xumbuztepa",
         text: "Mil. avv. VI–V asrlarda Xorazm Ahamoniylar davlatining 16-satrapligi tarkibiga kirgan. Hazorasp tumanidagi Xumbuztepa yodgorligidan mil. avv. VII asrdan milodiy IV asrgacha sopol ishlab chiqarilgani va mil. avv. V–IV asrlarga oid zardushtiylik otashparastlik ibodatxonasi qoldiqlari topilgan.",
       },
       {
-        icon: Coins,
+        icon: 'coins',
         color: '#319568',
         bg: '#E8F5EE',
         title: "Mustaqil Xorazm va shoh Farasman (mil. avv. 328)",
         text: "Mil. avv. IV asr boshlarida Xorazm Ahamoniylardan mustaqillikka erishdi. Mil. avv. 328-yil bahorida Xorazm hukmdori Farasman 1500 suvoriy bilan Iskandar Maqduniy qarorgohiga tashrif buyurib, diplomatiya va hamkorlik muzokaralari olib borgan.",
       },
       {
-        icon: Landmark,
+        icon: 'museum',
         color: '#7C3AED',
         bg: '#F3EEFF',
         title: "Afrig'iylar sulolasi va Kot (305–X asr)",
@@ -70,28 +71,28 @@ const ancientData = {
     phasesTitle: "Археологические культуры и этапы государственности",
     phases: [
       {
-        icon: Layers,
+        icon: 'layers',
         color: '#15528B',
         bg: '#EBF3FA',
         title: "Кельтеминарская, Тазабагъябская и Амирабадская культуры",
         text: "В IV–III тыс. до н.э. в дельте Амударьи существовала кельтеминарская культура охотников и рыболовов, во II тыс. до н.э. — скотоводы-земледельцы тазабагъябской и суярганской культур, а в IX–VIII вв. до н.э. сложилась амирабадская культура с развитыми оросительными каналами.",
       },
       {
-        icon: Compass,
+        icon: 'compass',
         color: '#C58B43',
         bg: '#FFF3E0',
         title: "XVI сатрапия Ахеменидов и храм Хумбузтепа",
         text: "В VI–V вв. до н.э. Хорезм входил в державу Ахеменидов как 16-я сатрапия. На городище Хумбузтепа в Хазараспском районе археологи открыли керамический центр VII в. до н.э. – IV в. н.э. и остатки зороастрийского храма огня V–IV вв. до н.э.",
       },
       {
-        icon: Coins,
+        icon: 'coins',
         color: '#319568',
         bg: '#E8F5EE',
         title: "Независимый Хорезм и царь Фарасман (328 г. до н.э.)",
         text: "К началу IV века до н.э. Хорезм обрёл полную независимость. Весной 328 года до н.э. хорезмский царь Фарасман с 1500 всадниками прибыл в ставку Александра Македонского для дипломатических переговоров.",
       },
       {
-        icon: Landmark,
+        icon: 'museum',
         color: '#7C3AED',
         bg: '#F3EEFF',
         title: "Династия Афригидов и столица Кят (305–X в.)",
@@ -121,28 +122,28 @@ const ancientData = {
     phasesTitle: "Archaeological Horizons & Early Dynasties",
     phases: [
       {
-        icon: Layers,
+        icon: 'layers',
         color: '#15528B',
         bg: '#EBF3FA',
         title: "Kelteminar, Tazabagyab & Amirabad Cultures",
         text: "The Akchadarya delta supported Neolithic Kelteminar fishers and hunters (4th–3rd millennia BCE), Bronze Age Tazabagyab and Suyargan farmers (2nd millennium BCE), and large-scale irrigation engineers of the Amirabad horizon (9th–8th centuries BCE).",
       },
       {
-        icon: Compass,
+        icon: 'compass',
         color: '#C58B43',
         bg: '#FFF3E0',
         title: "16th Achaemenid Satrapy & Khumbuztepa",
         text: "During the 6th–5th centuries BCE, Khorezm formed the 16th Satrapy of the Achaemenid Empire. Excavations at Khumbuztepa in Hazorasp uncovered ceramic workshops spanning the 7th century BCE to 4th century CE alongside a 5th–4th century BCE Zoroastrian fire temple.",
       },
       {
-        icon: Coins,
+        icon: 'coins',
         color: '#319568',
         bg: '#E8F5EE',
         title: "Independence & King Pharasmanes (328 BCE)",
         text: "Regaining independence in the early 4th century BCE, Khorezm’s king Pharasmanes rode with 1,500 horsemen to Alexander the Great’s camp in spring 328 BCE to negotiate an alliance.",
       },
       {
-        icon: Landmark,
+        icon: 'museum',
         color: '#7C3AED',
         bg: '#F3EEFF',
         title: "Afrighid Dynasty & Kath (305 CE–10th c.)",
@@ -199,8 +200,8 @@ export default function AncientPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {content.phases.map((p) => (
               <div key={p.title} className="bg-white border border-[#E5EAF0] rounded-2xl p-5">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: p.bg, color: p.color }}>
-                  <p.icon size={20} />
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: p.bg }}>
+                  <Icon3D name={p.icon} alt={p.title} size={28} />
                 </div>
                 <h3 className="font-bold text-[#17243B] mb-2">{p.title}</h3>
                 <p className="text-sm text-[#66758A] leading-relaxed">{p.text}</p>

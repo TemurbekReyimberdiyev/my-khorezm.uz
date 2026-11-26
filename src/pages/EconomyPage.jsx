@@ -6,6 +6,7 @@ import { getEconomyData } from '../data/economy';
 import { getArticles } from '../data/articles';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
+import Icon3D from '../components/common/Icon3D';
 
 export default function EconomyPage() {
   const { language, t } = useLanguage();
@@ -106,14 +107,14 @@ export default function EconomyPage() {
               <div className="xl:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5" id="indicators">
                 <h3 className="font-bold text-[#17243B] text-sm mb-3">{ec.indicatorsTitle}</h3>
                 {[
-                  { icon: Building, l: ec.gdpLabel, v: data.keyIndicators.gdp },
-                  { icon: TrendingUp, l: ec.growthLabel, v: data.keyIndicators.growth },
-                  { icon: Users, l: ec.perCapitaLabel, v: data.keyIndicators.perCapita },
-                  { icon: Package, l: ec.enterprisesLabel, v: data.keyIndicators.enterprises },
+                  { icon: 'city', l: ec.gdpLabel, v: data.keyIndicators.gdp },
+                  { icon: 'chart', l: ec.growthLabel, v: data.keyIndicators.growth },
+                  { icon: 'users', l: ec.perCapitaLabel, v: data.keyIndicators.perCapita },
+                  { icon: 'package', l: ec.enterprisesLabel, v: data.keyIndicators.enterprises },
                 ].map((item) => (
                   <div key={item.l} className="flex items-center justify-between py-2 border-b border-[#F7F9FC] last:border-0 text-xs">
                     <span className="text-[#66758A] flex items-center gap-2">
-                      <item.icon size={13} className="text-[#15528B]" /> {item.l}
+                      <Icon3D name={item.icon} size={18} /> {item.l}
                     </span>
                     <span className="font-bold text-[#17243B]">{item.v}</span>
                   </div>
@@ -260,10 +261,10 @@ export default function EconomyPage() {
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5">
                 <h2 className="font-bold text-[#17243B] text-sm mb-4">{supportTitle}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  {supportCards.map((c) => (
+                  {supportCards.map((c, idx) => (
                     <div key={c.l} className="p-3 rounded-xl border border-[#E5EAF0] text-center bg-[#FCFDFF]">
-                      <div className="w-9 h-9 rounded-lg flex items-center justify-center mx-auto mb-2" style={{ backgroundColor: c.bg, color: c.c }}>
-                        <c.icon size={16} />
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-2" style={{ backgroundColor: c.bg }}>
+                        <Icon3D name={['percent', 'coins', 'rocket', 'headphones'][idx] || 'coins'} alt={c.l} size={24} />
                       </div>
                       <div className="text-[11px] font-semibold text-[#17243B] leading-tight">{c.l}</div>
                     </div>

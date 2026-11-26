@@ -1,13 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Eye, Play, Newspaper, Megaphone, TrendingUp, Users, GraduationCap, Music, Camera, Leaf } from 'lucide-react';
+import { Calendar, Eye, Play } from 'lucide-react';
 import { getArticles } from '../data/articles';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
 import Badge from '../components/common/Badge';
 import Pagination from '../components/common/Pagination';
 import NewsletterBanner from '../components/homepage/NewsletterBanner';
+import Icon3D from '../components/common/Icon3D';
 
 const BADGE_VARIANTS = {
   tarix: 'primary',
@@ -30,14 +31,14 @@ export default function NewsPage() {
   const PER = 6;
 
   const sidebarCats = [
-    { k: 'all', l: nText.cats.all, icon: Newspaper },
-    { k: 'iqtisodiyot', l: nText.cats.iqtisodiyot, icon: TrendingUp },
-    { k: 'talim', l: nText.cats.talim, icon: GraduationCap },
-    { k: 'madaniyat', l: nText.cats.madaniyat, icon: Music },
-    { k: 'turizm', l: nText.cats.turizm, icon: Camera },
-    { k: 'ekologiya', l: nText.cats.ekologiya, icon: Leaf },
-    { k: 'tarix', l: nText.cats.tarix, icon: Users },
-    { k: 'texnologiya', l: nText.cats.texnologiya, icon: Megaphone },
+    { k: 'all', l: nText.cats.all, icon: 'news' },
+    { k: 'iqtisodiyot', l: nText.cats.iqtisodiyot, icon: 'chart' },
+    { k: 'talim', l: nText.cats.talim, icon: 'graduation' },
+    { k: 'madaniyat', l: nText.cats.madaniyat, icon: 'music' },
+    { k: 'turizm', l: nText.cats.turizm, icon: 'camera' },
+    { k: 'ekologiya', l: nText.cats.ekologiya, icon: 'leaf' },
+    { k: 'tarix', l: nText.cats.tarix, icon: 'users' },
+    { k: 'texnologiya', l: nText.cats.texnologiya, icon: 'megaphone' },
   ];
 
   const timeTabs = language === 'ru'
@@ -105,7 +106,7 @@ export default function NewsPage() {
                     catKey === c.k ? 'bg-[#15528B] text-white' : 'text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]'
                   }`}
                 >
-                  <c.icon size={13} className="shrink-0" />
+                  <Icon3D name={c.icon} size={18} />
                   <span className="truncate">{c.l}</span>
                 </button>
               ))}

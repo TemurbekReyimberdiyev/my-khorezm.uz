@@ -7,6 +7,7 @@ import { getEcologyData } from '../data/ecology';
 import { useLanguage } from '../hooks/useLanguage';
 import { useWeather, formatTemp } from '../context/WeatherContext';
 import PageHero from '../components/common/PageHero';
+import Icon3D from '../components/common/Icon3D';
 import AqiGauge from '../components/common/AqiGauge';
 
 export default function EcologyPage() {
@@ -177,14 +178,14 @@ export default function EcologyPage() {
 
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-5 items-center">
                 {[
-                  { icon: Thermometer, label: aq.labels.temp, value: formatTemp(temperature), color: '#319568' },
-                  { icon: Droplets, label: aq.labels.humidity, value: `${humidity}%`, color: '#15528B' },
-                  { icon: Wind, label: 'PM2.5', value: `${pm25} µg/m³`, badge: statusText[pm25Level], badgeLevel: pm25Level, color: '#319568' },
-                  { icon: Wind, label: 'PM10', value: `${pm10} µg/m³`, badge: statusText[pm10Level], badgeLevel: pm10Level, color: '#C58B43' },
-                  { icon: Wind, label: aq.labels.wind, value: `${windSpeed} m/s`, color: '#15528B' },
+                  { icon: 'thermometer', label: aq.labels.temp, value: formatTemp(temperature) },
+                  { icon: 'water', label: aq.labels.humidity, value: `${humidity}%` },
+                  { icon: 'wind', label: 'PM2.5', value: `${pm25} µg/m³`, badge: statusText[pm25Level], badgeLevel: pm25Level },
+                  { icon: 'wind', label: 'PM10', value: `${pm10} µg/m³`, badge: statusText[pm10Level], badgeLevel: pm10Level },
+                  { icon: 'wind', label: aq.labels.wind, value: `${windSpeed} m/s` },
                 ].map((item) => (
                   <div key={item.label} className="border border-[#E5EAF0] rounded-xl p-3 text-center h-full flex flex-col justify-center">
-                    <item.icon size={17} className="mx-auto mb-1" style={{ color: item.color }} />
+                    <Icon3D name={item.icon} alt={item.label} size={24} className="mx-auto mb-1" />
                     <div className="text-[11px] text-[#66758A] leading-tight">{item.label}</div>
                     <div className="font-bold text-[#17243B] text-sm mt-0.5">{item.value}</div>
                     {item.badge && (
@@ -237,8 +238,8 @@ export default function EcologyPage() {
                   <div key={issue.id} className="bg-white border border-[#E5EAF0] rounded-2xl overflow-hidden group hover:shadow-md transition-shadow">
                     <img src={issuePhotos[idx]} alt={issue.title} className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div className="p-3">
-                      <div className="flex items-center gap-1 mb-1">
-                        <AlertTriangle size={11} className={issue.isSevere ? 'text-red-500' : 'text-yellow-500'} />
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <Icon3D name="warning" size={16} />
                         <span className={`text-[10px] font-semibold ${issue.isSevere ? 'text-red-500' : 'text-yellow-600'}`}>{issue.severity}</span>
                       </div>
                       <h3 className="font-bold text-[#17243B] text-xs leading-tight">{issue.title}</h3>

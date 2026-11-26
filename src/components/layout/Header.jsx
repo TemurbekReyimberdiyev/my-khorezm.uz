@@ -1,52 +1,37 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Clock,
-  Sun,
-  Moon,
-  CloudSun,
-  CloudMoon,
-  Cloud,
-  CloudFog,
-  CloudDrizzle,
-  CloudRain,
-  CloudSnow,
-  CloudLightning,
-  Wind,
-  Menu,
-  Search,
-} from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useWeather, formatTemp } from '../../context/WeatherContext';
 import MobileMenu from './MobileMenu';
 import SearchModal from '../common/SearchModal';
+import Icon3D from '../common/Icon3D';
 
-function getWeatherVisual(conditionKey, isDay) {
+function getWeatherIconName(conditionKey, isDay) {
   switch (conditionKey) {
     case 'sunny':
-      return { Icon: Sun, color: '#F59E0B' };
+      return 'sun';
     case 'clearNight':
-      return { Icon: Moon, color: '#4F46E5' };
+      return 'moon';
     case 'mostlyClear':
-      return isDay ? { Icon: CloudSun, color: '#D97706' } : { Icon: CloudMoon, color: '#4F46E5' };
     case 'partlyCloudy':
-      return isDay ? { Icon: CloudSun, color: '#C58B43' } : { Icon: CloudMoon, color: '#6366F1' };
+      return isDay ? 'partly-cloudy-day' : 'partly-cloudy-night';
     case 'cloudy':
-      return { Icon: Cloud, color: '#64748B' };
+      return 'cloud';
     case 'foggy':
-      return { Icon: CloudFog, color: '#64748B' };
+      return 'fog';
     case 'drizzle':
-      return { Icon: CloudDrizzle, color: '#0EA5E9' };
+      return 'drizzle';
     case 'rainy':
-      return { Icon: CloudRain, color: '#0284C7' };
+      return 'rain';
     case 'snowy':
-      return { Icon: CloudSnow, color: '#0EA5E9' };
+      return 'snow';
     case 'stormy':
-      return { Icon: CloudLightning, color: '#7C3AED' };
+      return 'storm';
     case 'windy':
-      return { Icon: Wind, color: '#0D9488' };
+      return 'wind';
     default:
-      return isDay ? { Icon: CloudSun, color: '#C58B43' } : { Icon: CloudMoon, color: '#6366F1' };
+      return isDay ? 'partly-cloudy-day' : 'partly-cloudy-night';
   }
 }
 
@@ -56,7 +41,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const { language, changeLanguage, t } = useLanguage();
   const { temperature, conditionKey, isDay, windSpeed, humidity, updatedAt, refreshing, refresh } = useWeather();
-  const { Icon: WeatherIcon, color: weatherIconColor } = getWeatherVisual(conditionKey, isDay);
+  const weatherIconName = getWeatherIconName(conditionKey, isDay);
   const weatherConditionLabel = t.weather[conditionKey] || t.weather.partlyCloudy;
   const weatherTooltip = `${t.header.weather} · ${weatherConditionLabel} · ${windSpeed} m/s · ${humidity}%${updatedAt ? ` (${updatedAt})` : ''}`;
 
@@ -93,7 +78,7 @@ export default function Header() {
 
           <div className="flex items-center gap-2 sm:gap-4 md:gap-7 shrink-0">
             <div className="hidden md:flex items-center gap-2.5 text-[#17243B]">
-              <Clock size={22} className="text-[#15528B]" strokeWidth={1.75} />
+              <Icon3D name="clock" size={28} eager />
               <div>
                 <div className="text-[11px] text-[#66758A] leading-none">{t.header.time}</div>
                 <div className="font-bold text-lg leading-tight text-[#17243B]">{hours}:{minutes}</div>
@@ -107,11 +92,11 @@ export default function Header() {
               title={weatherTooltip}
               className="hidden md:flex items-center gap-2.5 text-left rounded-lg px-2 py-1 -mx-2 hover:bg-[#F7F9FC] transition-colors cursor-pointer"
             >
-              <WeatherIcon
-                size={26}
-                style={{ color: weatherIconColor }}
-                className={refreshing ? 'animate-pulse shrink-0' : 'shrink-0'}
-                strokeWidth={1.75}
+              <Icon3D
+                name={weatherIconName}
+                size={32}
+                eager
+                className={refreshing ? 'animate-pulse' : ''}
               />
               <div>
                 <div className="text-[11px] text-[#66758A] leading-none">{t.header.weather}</div>
@@ -159,7 +144,7 @@ export default function Header() {
       <div className="md:hidden border-t border-[#E5EAF0] bg-[#F7F9FC]/90">
         <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-1.5 text-[#17243B] min-w-0">
-            <Clock size={14} className="text-[#15528B] shrink-0" strokeWidth={1.75} />
+            <Icon3D name="clock" size={18} eager />
             <span className="font-bold tabular-nums shrink-0">{hours}:{minutes}</span>
             <span className="text-[#66758A] truncate">· {dateStr}</span>
           </div>
@@ -169,11 +154,11 @@ export default function Header() {
             title={weatherTooltip}
             className="flex items-center gap-1.5 text-[#17243B] shrink-0 cursor-pointer"
           >
-            <WeatherIcon
-              size={15}
-              style={{ color: weatherIconColor }}
-              className={refreshing ? 'animate-pulse shrink-0' : 'shrink-0'}
-              strokeWidth={1.75}
+            <Icon3D
+              name={weatherIconName}
+              size={20}
+              eager
+              className={refreshing ? 'animate-pulse' : ''}
             />
             <span className="font-bold">{formatTemp(temperature)}</span>
             <span className="text-[#66758A] truncate max-w-[130px]">· {weatherConditionLabel}</span>

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getPersonalities } from '../../data/personalities';
 import { useLanguage } from '../../hooks/useLanguage';
+import Icon3D from '../common/Icon3D';
 
 export default function PersonalitiesStrip() {
   const { language, t } = useLanguage();
@@ -13,7 +14,7 @@ export default function PersonalitiesStrip() {
         <div className="flex flex-col lg:flex-row lg:items-center gap-6">
           <div className="lg:w-60 shrink-0">
             <div className="flex items-center gap-2 mb-2">
-              <Award size={19} className="text-[#15528B]" />
+              <Icon3D name="award" size={24} />
               <h2 className="font-bold text-[#17243B] text-lg">{t.home.personalitiesTitle}</h2>
             </div>
             <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-4">{t.home.personalitiesSubtitle}</p>

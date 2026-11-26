@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronLeft, ChevronRight, Compass } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../../hooks/useLanguage';
+import Icon3D from '../common/Icon3D';
 
 const PHOTOS = [
   '/images/ancient-fortress.jpg',
@@ -18,7 +19,7 @@ export default function FeaturedSection() {
         <div className="flex items-center justify-between mb-5">
           <div>
             <div className="flex items-center gap-2">
-              <Compass size={19} className="text-[#15528B]" />
+              <Icon3D name="compass" size={24} />
               <h2 className="font-bold text-[#17243B] text-lg">{t.home.discoverTitle}</h2>
             </div>
             <p className="text-xs sm:text-sm text-[#66758A] mt-0.5">{t.home.discoverSubtitle}</p>

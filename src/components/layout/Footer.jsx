@@ -1,20 +1,9 @@
 ﻿import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Video,
-  Camera,
-  Share2,
-  Send,
-  MapPin,
-  Mail,
-  Phone,
-  Smartphone,
-  HeartHandshake,
-  Heart,
-  ArrowRight,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../hooks/useLanguage';
 import DonateModal from '../common/DonateModal';
+import Icon3D from '../common/Icon3D';
 
 export default function Footer() {
   const { language, t } = useLanguage();
@@ -59,18 +48,18 @@ export default function Footer() {
               </Link>
               <div className="flex gap-2 mt-4">
                 {[
-                  { icon: Send, href: '#telegram', label: 'Telegram' },
-                  { icon: Video, href: '#youtube', label: 'YouTube' },
-                  { icon: Camera, href: '#instagram', label: 'Instagram' },
-                  { icon: Share2, href: '#facebook', label: 'Facebook' },
-                ].map(({ icon: Icon, href, label }) => (
+                  { icon: 'telegram', href: '#telegram', label: 'Telegram' },
+                  { icon: 'youtube', href: '#youtube', label: 'YouTube' },
+                  { icon: 'instagram', href: '#instagram', label: 'Instagram' },
+                  { icon: 'facebook', href: '#facebook', label: 'Facebook' },
+                ].map(({ icon, href, label }) => (
                   <a
                     key={label}
                     href={href}
                     aria-label={label}
-                    className="w-8 h-8 rounded-lg bg-[#F7F9FC] border border-[#E5EAF0] flex items-center justify-center text-[#15528B] hover:bg-[#EBF3FA] transition-colors"
+                    className="w-9 h-9 rounded-xl bg-[#F7F9FC] border border-[#E5EAF0] flex items-center justify-center hover:bg-[#EBF3FA] hover:scale-105 transition-all"
                   >
-                    <Icon size={14} />
+                    <Icon3D name={icon} alt={label} size={24} />
                   </a>
                 ))}
               </div>
@@ -109,14 +98,14 @@ export default function Footer() {
               <div>
                 <h4 className="font-semibold text-[#17243B] mb-3 text-sm">{t.footer.contacts}</h4>
                 <ul className="space-y-2">
-                  <li className="flex gap-2 text-xs text-[#66758A]">
-                    <MapPin size={14} className="mt-0.5 shrink-0 text-[#15528B]" /> {t.footer.address}
+                  <li className="flex items-start gap-2 text-xs text-[#66758A]">
+                    <Icon3D name="map-pin" size={16} className="mt-0.5" /> {t.footer.address}
                   </li>
-                  <li className="flex gap-2 text-xs text-[#66758A]">
-                    <Mail size={14} className="mt-0.5 shrink-0 text-[#15528B]" /> info@my-khorezm.uz
+                  <li className="flex items-start gap-2 text-xs text-[#66758A]">
+                    <Icon3D name="mail" size={16} className="mt-0.5" /> info@my-khorezm.uz
                   </li>
-                  <li className="flex gap-2 text-xs text-[#66758A]">
-                    <Phone size={14} className="mt-0.5 shrink-0 text-[#15528B]" /> +998 62 223 45 67
+                  <li className="flex items-start gap-2 text-xs text-[#66758A]">
+                    <Icon3D name="phone" size={16} className="mt-0.5" /> +998 62 223 45 67
                   </li>
                 </ul>
               </div>
@@ -125,14 +114,14 @@ export default function Footer() {
                 <h4 className="font-semibold text-[#17243B] mb-2 text-xs">{mobileLabel}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="flex items-center gap-2 bg-[#17243B] text-white px-2.5 py-1.5 rounded-lg text-xs">
-                    <Smartphone size={14} className="shrink-0" />
+                    <Icon3D name="app-store" alt="App Store" size={20} />
                     <div className="min-w-0">
                       <div className="text-[8px] text-white/70 leading-none truncate">Download on the</div>
                       <div className="font-semibold text-[11px] leading-tight truncate">App Store</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 bg-[#17243B] text-white px-2.5 py-1.5 rounded-lg text-xs">
-                    <Smartphone size={14} className="shrink-0" />
+                    <Icon3D name="google-play" alt="Google Play" size={20} />
                     <div className="min-w-0">
                       <div className="text-[8px] text-white/70 leading-none truncate">GET IT ON</div>
                       <div className="font-semibold text-[11px] leading-tight truncate">Google Play</div>
@@ -161,8 +150,8 @@ export default function Footer() {
 
                 <div className="relative z-10">
                   <div className="flex items-start gap-2.5 mb-2">
-                    <div className="w-9 h-9 rounded-xl bg-white border border-[#E6D6B5] flex items-center justify-center shrink-0 text-[#15528B]">
-                      <HeartHandshake size={19} />
+                    <div className="w-10 h-10 rounded-xl bg-white border border-[#E6D6B5] flex items-center justify-center shrink-0">
+                      <Icon3D name="donate" size={26} />
                     </div>
                     <h4 className="font-bold text-[#17243B] text-sm leading-snug">{t.donate.cardTitle}</h4>
                   </div>
@@ -174,7 +163,7 @@ export default function Footer() {
                     onClick={() => setDonateOpen(true)}
                     className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#2A74BA] to-[#15528B] hover:from-[#15528B] hover:to-[#123A61] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-xs cursor-pointer transition-all"
                   >
-                    <Heart size={15} />
+                    <Icon3D name="heart" size={18} />
                     <span>{t.donate.cardButton}</span>
                     <ArrowRight size={14} />
                   </button>

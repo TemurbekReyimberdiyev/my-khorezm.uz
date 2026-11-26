@@ -1,11 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Pause, ChevronLeft, ChevronRight, Compass, Video, Image, BarChart2, Headphones, Download, Layers, Briefcase, Tv, ArrowRight, ZoomIn } from 'lucide-react';
+import { Play, Pause, ChevronLeft, ChevronRight, Download, ArrowRight, ZoomIn } from 'lucide-react';
 import { getMediaItems, getComparisonPairs } from '../data/mediaItems';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
 import ImageLightbox from '../components/common/ImageLightbox';
+import Icon3D from '../components/common/Icon3D';
 
 function ComparisonSlider({ pair, beforeLabel, afterLabel }) {
   const [pos, setPos] = useState(50);
@@ -67,11 +68,11 @@ export default function MediaPage() {
   const filteredPhotos = catKey === 'all' ? photos : photos.filter((p) => p.categoryKey === catKey);
 
   const sidebarItems = [
-    { k: 'all', l: mText.title, icon: Layers },
-    { k: 'videos', l: mText.tabs.videos, icon: Video },
-    { k: 'photos', l: mText.tabs.photos, icon: Image },
-    { k: 'comparison', l: mText.tabs.comparison, icon: BarChart2 },
-    { k: 'panorama', l: mText.tabs.panorama, icon: Compass },
+    { k: 'all', l: mText.title, icon: 'layers' },
+    { k: 'videos', l: mText.tabs.videos, icon: 'video' },
+    { k: 'photos', l: mText.tabs.photos, icon: 'photo' },
+    { k: 'comparison', l: mText.tabs.comparison, icon: 'chart' },
+    { k: 'panorama', l: mText.tabs.panorama, icon: 'compass' },
   ];
 
   const photoCats = [
@@ -110,7 +111,7 @@ export default function MediaPage() {
                     tab === it.k ? 'bg-[#15528B] text-white' : 'text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]'
                   }`}
                 >
-                  <it.icon size={14} className="shrink-0" />
+                  <Icon3D name={it.icon} size={18} />
                   <span className="truncate">{it.l}</span>
                 </button>
               ))}
@@ -120,7 +121,7 @@ export default function MediaPage() {
                   className="w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold text-[#15528B] bg-[#EBF3FA] hover:bg-[#dceaf7] transition-colors"
                 >
                   <span className="flex items-center gap-2 truncate">
-                    <Tv size={14} className="shrink-0" />
+                    <Icon3D name="tv" size={18} />
                     <span className="truncate">{t.nav.tvRadio}</span>
                   </span>
                   <span className="w-2 h-2 rounded-full bg-[#319568] shrink-0" />
@@ -133,8 +134,8 @@ export default function MediaPage() {
             {/* Live TV & Radio Banner */}
             <div className="bg-gradient-to-r from-[#123A61] to-[#15528B] rounded-2xl p-4 sm:p-5 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-start sm:items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-                  <Tv size={22} className="text-white" />
+                <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                  <Icon3D name="tv" size={30} />
                 </div>
                 <div>
                   <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#319568] text-white mb-1">
@@ -283,8 +284,8 @@ export default function MediaPage() {
                   {playingAudio ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />}
                 </button>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#17243B]">
-                    <Headphones size={13} className="text-[#15528B]" /> {audioTitle}
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#17243B]">
+                    <Icon3D name="headphones" size={18} /> {audioTitle}
                   </div>
                   <div className="h-2 bg-[#EBF3FA] rounded-full mt-2 overflow-hidden">
                     <div className="h-full bg-[#15528B] transition-all" style={{ width: `${audioProgress}%` }} />
@@ -304,8 +305,8 @@ export default function MediaPage() {
 
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-4 flex items-center justify-between gap-3">
                 <div>
-                  <h3 className="font-bold text-[#17243B] text-sm flex items-center gap-1.5">
-                    <Briefcase size={14} className="text-[#15528B]" /> {pressTitle}
+                  <h3 className="font-bold text-[#17243B] text-sm flex items-center gap-2">
+                    <Icon3D name="briefcase" size={18} /> {pressTitle}
                   </h3>
                   <p className="text-[11px] text-[#66758A] mt-0.5">Media Kit · 2025</p>
                 </div>

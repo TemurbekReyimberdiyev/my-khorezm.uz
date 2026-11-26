@@ -1,11 +1,12 @@
 ﻿import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, ChefHat, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { getRecipes } from '../data/recipes';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
 import Badge from '../components/common/Badge';
+import Icon3D from '../components/common/Icon3D';
 
 const diffColor = { easy: 'success', medium: 'accent', hard: 'red' };
 
@@ -67,11 +68,11 @@ export default function CuisinePage() {
                 <h3 className="font-bold text-[#17243B] text-base">{r.name}</h3>
                 <p className="text-sm text-[#66758A] mt-1 line-clamp-2">{r.description}</p>
                 <div className="flex items-center gap-4 mt-3 text-xs text-[#66758A]">
-                  <span className="flex items-center gap-1">
-                    <Clock size={12} /> {r.cookTime}
+                  <span className="flex items-center gap-1.5">
+                    <Icon3D name="clock" size={16} /> {r.cookTime}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <ChefHat size={12} /> {r.difficulty}
+                  <span className="flex items-center gap-1.5">
+                    <Icon3D name="chef" size={16} /> {r.difficulty}
                   </span>
                 </div>
                 <div className="mt-3 flex items-center gap-1 text-sm text-[#15528B] font-semibold">

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, FileText, Calendar } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 import { getArticles } from '../../data/articles';
 import { useLanguage } from '../../hooks/useLanguage';
 import Badge from '../common/Badge';
+import Icon3D from '../common/Icon3D';
 
 export default function LatestNews() {
   const { language, t } = useLanguage();
@@ -14,7 +15,7 @@ export default function LatestNews() {
     <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5 flex flex-col justify-between">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <FileText size={19} className="text-[#15528B]" />
+          <Icon3D name="news" size={24} />
           <h2 className="font-bold text-[#17243B] text-base sm:text-lg">{t.home.newsTitle}</h2>
         </div>
         <Link to="/yangiliklar" className="flex items-center gap-1 text-xs sm:text-sm text-[#15528B] font-medium hover:gap-2 transition-all">

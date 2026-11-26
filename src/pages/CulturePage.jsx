@@ -17,6 +17,7 @@ import {
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
+import Icon3D from '../components/common/Icon3D';
 
 const cultureData = {
   uz: {
@@ -150,9 +151,8 @@ export default function CulturePage() {
       desc: cText.subCards.lazgi,
       href: '#lazgi',
       isAnchor: true,
-      icon: Music,
+      icon3d: 'music',
       img: '/images/lazgi-dance.jpg',
-      color: '#DB2777',
       bg: '#FDE8F3',
     },
     {
@@ -160,9 +160,8 @@ export default function CulturePage() {
       label: t.nav.dictionary,
       desc: cText.subCards.dictionary,
       href: '/lugat',
-      icon: BookOpen,
+      icon3d: 'book',
       img: '/images/ogahiy-museum.jpg',
-      color: '#15528B',
       bg: '#EBF3FA',
     },
     {
@@ -170,9 +169,8 @@ export default function CulturePage() {
       label: t.nav.personalities,
       desc: cText.subCards.personalities,
       href: '/shaxslar',
-      icon: Users,
+      icon3d: 'users',
       img: '/images/portrait-xorazmiy.jpg',
-      color: '#7C3AED',
       bg: '#F3EEFF',
     },
     {
@@ -180,9 +178,8 @@ export default function CulturePage() {
       label: t.nav.cuisine,
       desc: cText.subCards.cuisine,
       href: '/taomlar',
-      icon: UtensilsCrossed,
+      icon3d: 'cuisine',
       img: '/images/shivit-oshi.jpg',
-      color: '#EA580C',
       bg: '#FFF1E6',
     },
     {
@@ -190,9 +187,8 @@ export default function CulturePage() {
       label: t.nav.education,
       desc: cText.subCards.education,
       href: '/ilm-fan',
-      icon: GraduationCap,
+      icon3d: 'graduation',
       img: '/images/university-urdu.jpg',
-      color: '#319568',
       bg: '#E8F5EE',
     },
     {
@@ -200,9 +196,8 @@ export default function CulturePage() {
       label: t.nav.aiAssistant,
       desc: cText.subCards.ai,
       href: '/ai-yordamchi',
-      icon: Sparkles,
+      icon3d: 'bot',
       img: '/images/kalta-minor.jpg',
-      color: '#C58B43',
       bg: '#FFF3E0',
     },
   ];
@@ -269,7 +264,7 @@ export default function CulturePage() {
                     href={s.href}
                     className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-white border border-[#E5EAF0] text-[#17243B] shrink-0"
                   >
-                    <s.icon size={13} style={{ color: s.color }} />
+                    <Icon3D name={s.icon3d} size={16} />
                     <span>{s.label}</span>
                   </a>
                 ) : (
@@ -278,7 +273,7 @@ export default function CulturePage() {
                     to={s.href}
                     className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-white border border-[#E5EAF0] text-[#17243B] shrink-0"
                   >
-                    <s.icon size={13} style={{ color: s.color }} />
+                    <Icon3D name={s.icon3d} size={16} />
                     <span>{s.label}</span>
                   </Link>
                 )
@@ -316,14 +311,13 @@ export default function CulturePage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
                 {subSections.map((s) => {
-                  const Icon = s.icon;
                   const cardBody = (
                     <div className="flex items-center gap-3.5 p-3 rounded-xl border border-[#E5EAF0] bg-[#F7F9FC] hover:bg-white hover:border-[#15528B]/40 hover:shadow-sm transition-all group h-full">
                       <img src={s.img} alt={s.label} className="w-16 h-16 rounded-xl object-cover shrink-0" />
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-1.5 mb-1">
-                          <span className="w-5 h-5 rounded-md flex items-center justify-center shrink-0" style={{ backgroundColor: s.bg }}>
-                            <Icon size={12} style={{ color: s.color }} />
+                          <span className="w-6 h-6 rounded-md flex items-center justify-center shrink-0" style={{ backgroundColor: s.bg }}>
+                            <Icon3D name={s.icon3d} size={16} />
                           </span>
                           <h3 className="font-bold text-[#17243B] text-sm truncate group-hover:text-[#15528B] transition-colors">
                             {s.label}

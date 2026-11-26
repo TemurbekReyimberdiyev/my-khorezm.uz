@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Eye, Newspaper, Calendar } from 'lucide-react';
+import { ArrowRight, Eye, Calendar } from 'lucide-react';
 import { getArticles } from '../../data/articles';
 import { useLanguage } from '../../hooks/useLanguage';
+import Icon3D from '../common/Icon3D';
 
 const badgeStyles = {
   tarix: 'bg-[#15528B] text-white',
@@ -22,7 +23,7 @@ export default function LatestArticles() {
       <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5 sm:p-6">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
-            <Newspaper size={19} className="text-[#15528B]" />
+            <Icon3D name="news" size={24} />
             <h2 className="font-bold text-[#17243B] text-lg">{t.home.articlesTitle}</h2>
           </div>
           <Link to="/yangiliklar" className="flex items-center gap-1 text-sm text-[#15528B] font-medium hover:gap-2 transition-all">

@@ -1,12 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
-import { Users, Map, ArrowLeft, CheckCircle, MapPin, ZoomIn } from 'lucide-react';
+import { ArrowLeft, CheckCircle, ZoomIn } from 'lucide-react';
 import { getDistricts } from '../data/districts';
 import { useLanguage } from '../hooks/useLanguage';
 import Badge from '../components/common/Badge';
 import PageHero from '../components/common/PageHero';
 import ImageLightbox from '../components/common/ImageLightbox';
+import Icon3D from '../components/common/Icon3D';
 
 export default function DistrictDetailPage() {
   const { slug } = useParams();
@@ -62,22 +63,31 @@ export default function DistrictDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
           <div className="bg-white border border-[#E5EAF0] rounded-xl p-4 text-center">
-            <Users size={18} className="text-[#15528B] mx-auto mb-1.5" />
+            <div className="w-10 h-10 rounded-xl bg-[#EBF3FA] flex items-center justify-center mx-auto mb-2">
+              <Icon3D name="users" size={26} />
+            </div>
             <div className="font-bold text-[#15528B] text-lg">{district.population}</div>
             <div className="text-xs text-[#66758A] mt-0.5">{dText.population}</div>
           </div>
           <div className="bg-white border border-[#E5EAF0] rounded-xl p-4 text-center">
-            <Map size={18} className="text-[#15528B] mx-auto mb-1.5" />
+            <div className="w-10 h-10 rounded-xl bg-[#E8F5EE] flex items-center justify-center mx-auto mb-2">
+              <Icon3D name="map" size={26} />
+            </div>
             <div className="font-bold text-[#15528B] text-lg">{district.area}</div>
             <div className="text-xs text-[#66758A] mt-0.5">{dText.area}</div>
           </div>
           <div className="bg-white border border-[#E5EAF0] rounded-xl p-4 text-center">
-            <MapPin size={18} className="text-[#C58B43] mx-auto mb-1.5" />
+            <div className="w-10 h-10 rounded-xl bg-[#FFF3E0] flex items-center justify-center mx-auto mb-2">
+              <Icon3D name="map-pin" size={26} />
+            </div>
             <div className="font-bold text-[#15528B] text-lg">{district.center || '—'}</div>
             <div className="text-xs text-[#66758A] mt-0.5">{dText.center}</div>
           </div>
           <div className="bg-white border border-[#E5EAF0] rounded-xl p-4 text-center">
-            <div className="font-bold text-[#15528B] text-lg mt-2">{typeLabel}</div>
+            <div className="w-10 h-10 rounded-xl bg-[#F3EEFF] flex items-center justify-center mx-auto mb-2">
+              <Icon3D name="city" size={26} />
+            </div>
+            <div className="font-bold text-[#15528B] text-lg">{typeLabel}</div>
             <div className="text-xs text-[#66758A] mt-0.5">{dText.status}</div>
           </div>
         </div>

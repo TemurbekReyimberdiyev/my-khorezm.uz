@@ -2,14 +2,15 @@
 import { GraduationCap, BookOpen, Cpu, FlaskConical } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
+import Icon3D from '../components/common/Icon3D';
 
 const eduContent = {
   uz: {
     stats: [
-      { icon: GraduationCap, l: "Oliy ta'lim muassasalari", v: '8' },
-      { icon: BookOpen, l: 'Umumta\'lim maktablari', v: '400+' },
-      { icon: Cpu, l: 'IT kompaniyalar', v: '150+' },
-      { icon: FlaskConical, l: 'Ilmiy tadqiqot markazlari', v: '12' },
+      { icon: 'graduation', l: "Oliy ta'lim muassasalari", v: '8' },
+      { icon: 'book', l: 'Umumta\'lim maktablari', v: '400+' },
+      { icon: 'cpu', l: 'IT kompaniyalar', v: '150+' },
+      { icon: 'flask', l: 'Ilmiy tadqiqot markazlari', v: '12' },
     ],
     universities: [
       { name: 'Urganch Davlat Universiteti', short: 'UrDU', students: '15 000+', photo: '/images/university-urdu.jpg' },
@@ -25,10 +26,10 @@ const eduContent = {
   },
   ru: {
     stats: [
-      { icon: GraduationCap, l: 'Высшие учебные заведения', v: '8' },
-      { icon: BookOpen, l: 'Общеобразовательные школы', v: '400+' },
-      { icon: Cpu, l: 'IT-компании и резиденты', v: '150+' },
-      { icon: FlaskConical, l: 'Научные центры', v: '12' },
+      { icon: 'graduation', l: 'Высшие учебные заведения', v: '8' },
+      { icon: 'book', l: 'Общеобразовательные школы', v: '400+' },
+      { icon: 'cpu', l: 'IT-компании и резиденты', v: '150+' },
+      { icon: 'flask', l: 'Научные центры', v: '12' },
     ],
     universities: [
       { name: 'Ургенчский государственный университет', short: 'УрГУ', students: '15 000+', photo: '/images/university-urdu.jpg' },
@@ -44,10 +45,10 @@ const eduContent = {
   },
   en: {
     stats: [
-      { icon: GraduationCap, l: 'Higher Education Institutions', v: '8' },
-      { icon: BookOpen, l: 'Public Schools', v: '400+' },
-      { icon: Cpu, l: 'IT Companies & Startups', v: '150+' },
-      { icon: FlaskConical, l: 'Research Centers', v: '12' },
+      { icon: 'graduation', l: 'Higher Education Institutions', v: '8' },
+      { icon: 'book', l: 'Public Schools', v: '400+' },
+      { icon: 'cpu', l: 'IT Companies & Startups', v: '150+' },
+      { icon: 'flask', l: 'Research Centers', v: '12' },
     ],
     universities: [
       { name: 'Urgench State University', short: 'UrSU', students: '15,000+', photo: '/images/university-urdu.jpg' },
@@ -83,8 +84,8 @@ export default function EducationPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {content.stats.map((item) => (
             <div key={item.l} className="bg-white border border-[#E5EAF0] rounded-2xl p-5 text-center">
-              <div className="w-10 h-10 rounded-xl bg-[#EBF3FA] flex items-center justify-center mx-auto mb-3">
-                <item.icon size={18} className="text-[#15528B]" />
+              <div className="w-11 h-11 rounded-xl bg-[#EBF3FA] flex items-center justify-center mx-auto mb-3">
+                <Icon3D name={item.icon} alt={item.l} size={28} />
               </div>
               <div className="font-bold text-2xl text-[#15528B]">{item.v}</div>
               <div className="text-xs text-[#66758A] mt-1">{item.l}</div>

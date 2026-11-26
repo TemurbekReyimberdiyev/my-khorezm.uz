@@ -1,11 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, Clock, Landmark, Play, CheckCircle, ExternalLink } from 'lucide-react';
+import { ArrowRight, Play, CheckCircle, ExternalLink } from 'lucide-react';
 import { getHistoryData } from '../data/history';
 import { getPersonalities } from '../data/personalities';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
-import KhorezmSvgMap from '../components/common/KhorezmSvgMap';
+import KhorezmMap from '../components/maps/KhorezmMap';
+import Icon3D from '../components/common/Icon3D';
 
 const ERA_PHOTOS = [
   '/images/ancient-fortress.jpg',
@@ -25,9 +26,9 @@ export default function HistoryPage() {
   const people = getPersonalities(language).slice(0, 6);
 
   const sidebarItems = [
-    { label: h.introTitle.split('—')[0].trim(), href: '#intro', icon: BookOpen },
-    { label: h.timelineTitle, href: '#timeline', icon: Clock },
-    ...eras.slice(0, 6).map((e) => ({ label: e.name, href: e.href, icon: Landmark })),
+    { label: h.introTitle.split('—')[0].trim(), href: '#intro', icon: 'book' },
+    { label: h.timelineTitle, href: '#timeline', icon: 'clock' },
+    ...eras.slice(0, 6).map((e) => ({ label: e.name, href: e.href, icon: 'museum' })),
   ];
 
   const statsItems = [
@@ -74,7 +75,7 @@ export default function HistoryPage() {
                         idx === 0 ? 'bg-[#15528B] text-white' : 'text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]'
                       }`}
                     >
-                      <item.icon size={14} className="shrink-0" />
+                      <Icon3D name={item.icon} size={18} />
                       <span className="truncate">{item.label}</span>
                     </a>
                   ) : (
@@ -83,7 +84,7 @@ export default function HistoryPage() {
                       to={item.href}
                       className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]"
                     >
-                      <item.icon size={14} className="shrink-0" />
+                      <Icon3D name={item.icon} size={18} />
                       <span className="truncate">{item.label}</span>
                     </Link>
                   )
@@ -190,7 +191,7 @@ export default function HistoryPage() {
                   <h2 className="font-bold text-[#17243B] text-sm">{t.pages.map.title}</h2>
                   <Link to="/xarita" className="text-xs font-semibold text-[#15528B]">{t.common.seeAll} →</Link>
                 </div>
-                <KhorezmSvgMap variant="simple" className="h-36" />
+                <KhorezmMap mode="compact" showFullscreen={false} className="h-44 w-full" />
               </div>
             </div>
 

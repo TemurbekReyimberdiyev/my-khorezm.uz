@@ -5,7 +5,8 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { getGeographyData } from '../data/geography';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
-import KhorezmSvgMap from '../components/common/KhorezmSvgMap';
+import Icon3D from '../components/common/Icon3D';
+import KhorezmMap from '../components/maps/KhorezmMap';
 
 export default function GeographyPage() {
   const { language, t } = useLanguage();
@@ -91,7 +92,7 @@ export default function GeographyPage() {
                     {t.common.readMore} <ArrowRight size={13} />
                   </Link>
                 </div>
-                <KhorezmSvgMap variant="simple" className="h-48" />
+                <KhorezmMap mode="compact" showFullscreen={false} className="h-56 w-full" />
               </div>
 
               <div className="xl:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5">
@@ -123,13 +124,13 @@ export default function GeographyPage() {
                 <p className="text-xs text-[#66758A] mb-3 leading-relaxed">{geo.climate.description}</p>
                 <div className="grid grid-cols-2 gap-2">
                   {[
-                    { icon: Sun, label: g.climateCards.summer, value: '+35...+42°C', color: '#EA580C', bg: '#FFF1E6' },
-                    { icon: Thermometer, label: g.climateCards.winter, value: '-5...-15°C', color: '#15528B', bg: '#EBF3FA' },
-                    { icon: Droplets, label: g.climateCards.annualPrecip, value: '80–120 mm', color: '#0891B2', bg: '#E0F7FA' },
-                    { icon: Wind, label: g.climateCards.wind, value: '3–6 m/s', color: '#319568', bg: '#E8F5EE' },
+                    { icon: 'sun', label: g.climateCards.summer, value: '+35...+42°C', bg: '#FFF1E6' },
+                    { icon: 'snow', label: g.climateCards.winter, value: '-5...-15°C', bg: '#EBF3FA' },
+                    { icon: 'rain', label: g.climateCards.annualPrecip, value: '80–120 mm', bg: '#E0F7FA' },
+                    { icon: 'wind', label: g.climateCards.wind, value: '3–6 m/s', bg: '#E8F5EE' },
                   ].map((c) => (
                     <div key={c.label} className="rounded-xl p-2.5 text-center border border-[#E5EAF0]" style={{ backgroundColor: c.bg }}>
-                      <c.icon size={15} className="mx-auto mb-1" style={{ color: c.color }} />
+                      <Icon3D name={c.icon} alt={c.label} size={22} className="mx-auto mb-1" />
                       <div className="font-bold text-xs text-[#17243B]">{c.value}</div>
                       <div className="text-[10px] text-[#66758A]">{c.label}</div>
                     </div>
@@ -237,10 +238,10 @@ export default function GeographyPage() {
             <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5" id="resources">
               <h2 className="font-bold text-[#17243B] text-base mb-3">{g.resourcesTitle}</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-                {resourceLabels.map((item) => (
+                {resourceLabels.map((item, idx) => (
                   <div key={item.title} className="flex items-center gap-2.5 p-3 rounded-xl border border-[#E5EAF0] bg-[#FCFDFF]">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: item.bg, color: item.color }}>
-                      <item.icon size={15} />
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: item.bg }}>
+                      <Icon3D name={['waves', 'layers', 'sun', 'globe', 'tree'][idx] || 'leaf'} alt={item.title} size={22} />
                     </div>
                     <div className="min-w-0">
                       <div className="text-xs font-bold text-[#17243B] truncate">{item.title}</div>

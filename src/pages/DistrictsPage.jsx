@@ -1,13 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Users, Map, ChevronRight, LayoutGrid, List, Building2, MapPin, BarChart3 } from 'lucide-react';
+import { Search, ChevronRight, LayoutGrid, List, Building2, MapPin } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { getDistricts } from '../data/districts';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
 import Badge from '../components/common/Badge';
-import KhorezmSvgMap from '../components/common/KhorezmSvgMap';
+import KhorezmMap from '../components/maps/KhorezmMap';
+import Icon3D from '../components/common/Icon3D';
 
 export default function DistrictsPage() {
   const { language, t } = useLanguage();
@@ -88,7 +89,7 @@ export default function DistrictsPage() {
                     {t.home.mapOpen} →
                   </Link>
                 </div>
-                <KhorezmSvgMap variant="full" className="h-48" />
+                <KhorezmMap mode="preview" showFullscreen={false} className="h-60 w-full" />
               </div>
 
               <div className="xl:col-span-4 bg-white border border-[#E5EAF0] rounded-2xl p-5">
@@ -182,10 +183,10 @@ export default function DistrictsPage() {
                       </h3>
                       <div className="flex gap-3 mt-1.5 text-xs text-[#66758A]">
                         <span className="flex items-center gap-1">
-                          <Users size={11} className="text-[#15528B]" /> {d.population}
+                          <Icon3D name="users" size={15} /> {d.population}
                         </span>
                         <span className="flex items-center gap-1">
-                          <Map size={11} className="text-[#15528B]" /> {d.area}
+                          <Icon3D name="map" size={15} /> {d.area}
                         </span>
                       </div>
                     </div>
@@ -204,7 +205,7 @@ export default function DistrictsPage() {
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5 flex items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <MapPin size={17} className="text-[#15528B]" />
+                    <Icon3D name="map-pin" size={20} />
                     <h3 className="font-bold text-[#17243B] text-sm">{t.pages.map.title}</h3>
                   </div>
                   <p className="text-xs text-[#66758A] mb-3">{t.home.mapSubtitle}</p>
@@ -212,12 +213,12 @@ export default function DistrictsPage() {
                     {t.home.mapOpen} →
                   </Link>
                 </div>
-                <KhorezmSvgMap variant="simple" className="w-44 h-28 shrink-0" />
+                <KhorezmMap mode="compact" showFullscreen={false} showResetButton={false} className="w-52 h-36 shrink-0" />
               </div>
 
               <div className="bg-white border border-[#E5EAF0] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-2">
-                  <BarChart3 size={17} className="text-[#15528B]" />
+                  <Icon3D name="chart" size={20} />
                   <h3 className="font-bold text-[#17243B] text-sm">{dText.area} (km²)</h3>
                 </div>
                 <ResponsiveContainer width="100%" height={110}>

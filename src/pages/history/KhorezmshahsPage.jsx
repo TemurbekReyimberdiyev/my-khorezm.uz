@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Shield, Crown, Swords, Landmark, BookOpen, ArrowLeft, ArrowRight, ZoomIn } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ZoomIn } from 'lucide-react';
 import { useLanguage } from '../../hooks/useLanguage';
 import PageHero from '../../components/common/PageHero';
 import ImageLightbox from '../../components/common/ImageLightbox';
+import Icon3D from '../../components/common/Icon3D';
 
 const shahsContent = {
   uz: {
@@ -17,11 +18,11 @@ const shahsContent = {
       { l: "Imperiya poytaxti", v: "Ko'hna Urganch" },
     ],
     cards: [
-      { icon: BookOpen, bg: '#E8F5EE', color: '#319568', title: "Ma'mun akademiyasi (1004)", text: "Ma'mun ibn Ma'mun saroyida Abu Rayhon Beruniy, Abu Ali ibn Sino, Abu Nasr ibn Iroq va Abu Sahl Masihiy birgalikda astronomiya, matematika va tibbiyot bo'yicha olamshumul asarlar yaratdilar." },
-      { icon: Crown, bg: '#EBF3FA', color: '#15528B', title: "Otsiz, El-Arslon va Takash yuksalishi", text: "Alovuddin Otsiz (1127–1156) Xorazm mustaqilligi uchun kurashib Marv va Nishopurga yurish qildi. El-Arslon (1156–1172) va Alovuddin Takash (1172–1200) davrida Xuroson, Eron va Iroqi Ajam imperiya tarkibiga qo'shildi." },
-      { icon: Landmark, bg: '#FFF3E0', color: '#C58B43', title: "Alovuddin Muhammad II va Gurganch", text: "Muhammad II (1200–1220) 1210-yilda Qoraxitoylarni yengib Movarounnahrni qo'lga kiritdi. Poytaxt Ko'hna Urganch Sharqning eng boy va gavjum shahri bo'lib, Qutlug' Temur minorasi va me'moriy obidalar bilan bezaldi." },
-      { icon: Swords, bg: '#FEF2F2', color: '#DC2626', title: "Mo'g'ul bosqini va Urganch mudofaasi (1219–1221)", text: "1219-yilda Chingizxon qo'shinlari saroydagi ichki nizolardan foydalanib bostirib kirdi. Ko'hna Urganch aholisi 1221-yilda yetti oy davomida qahramonona qarshilik ko'rsatdi; mo'g'ullar Amudaryo to'g'onini buzib shaharni suvga bostirdilar." },
-      { icon: Shield, bg: '#E8F5EE', color: '#319568', title: "Jaloliddin Manguberdi (1220–1231)", text: "So'nggi Xorazmshoh Jaloliddin Manguberdi Parvon jangida mo'g'ullarni mag'lub etib, Hind daryosi bo'yi, Eron va Ozarbayjonda 11 yil davomida Chingizxon imperiyasiga qarshi mardonavor kurash olib bordi." },
+      { icon: 'book', bg: '#E8F5EE', color: '#319568', title: "Ma'mun akademiyasi (1004)", text: "Ma'mun ibn Ma'mun saroyida Abu Rayhon Beruniy, Abu Ali ibn Sino, Abu Nasr ibn Iroq va Abu Sahl Masihiy birgalikda astronomiya, matematika va tibbiyot bo'yicha olamshumul asarlar yaratdilar." },
+      { icon: 'crown', bg: '#EBF3FA', color: '#15528B', title: "Otsiz, El-Arslon va Takash yuksalishi", text: "Alovuddin Otsiz (1127–1156) Xorazm mustaqilligi uchun kurashib Marv va Nishopurga yurish qildi. El-Arslon (1156–1172) va Alovuddin Takash (1172–1200) davrida Xuroson, Eron va Iroqi Ajam imperiya tarkibiga qo'shildi." },
+      { icon: 'museum', bg: '#FFF3E0', color: '#C58B43', title: "Alovuddin Muhammad II va Gurganch", text: "Muhammad II (1200–1220) 1210-yilda Qoraxitoylarni yengib Movarounnahrni qo'lga kiritdi. Poytaxt Ko'hna Urganch Sharqning eng boy va gavjum shahri bo'lib, Qutlug' Temur minorasi va me'moriy obidalar bilan bezaldi." },
+      { icon: 'swords', bg: '#FEF2F2', color: '#DC2626', title: "Mo'g'ul bosqini va Urganch mudofaasi (1219–1221)", text: "1219-yilda Chingizxon qo'shinlari saroydagi ichki nizolardan foydalanib bostirib kirdi. Ko'hna Urganch aholisi 1221-yilda yetti oy davomida qahramonona qarshilik ko'rsatdi; mo'g'ullar Amudaryo to'g'onini buzib shaharni suvga bostirdilar." },
+      { icon: 'shield', bg: '#E8F5EE', color: '#319568', title: "Jaloliddin Manguberdi (1220–1231)", text: "So'nggi Xorazmshoh Jaloliddin Manguberdi Parvon jangida mo'g'ullarni mag'lub etib, Hind daryosi bo'yi, Eron va Ozarbayjonda 11 yil davomida Chingizxon imperiyasiga qarshi mardonavor kurash olib bordi." },
     ],
     rulersTitle: "Anushteginiylar sulolasining asosiy Xorazmshohlari",
     rulers: [
@@ -51,11 +52,11 @@ const shahsContent = {
       { l: "Столица державы", v: "Куня-Ургенч" },
     ],
     cards: [
-      { icon: BookOpen, bg: '#E8F5EE', color: '#319568', title: "Академия Мамуна (1004)", text: "При дворе Хорезмшаха в Гургандже трудились аль-Беруни, Ибн Сина, Абу Наср ибн Ирак и Масихи, создавшие фундаментальные труды по математике, астрономии и медицине." },
-      { icon: Crown, bg: '#EBF3FA', color: '#15528B', title: "Атсыз, Иль-Арслан и Текеш", text: "Атсыз (1127–1156) заложил основы независимости, Иль-Арслан (1156–1172) расширил границы в Хорасан, а Текеш (1172–1200) в 1194 г. разгромил последних иракских сельджуков, удвоив территорию державы." },
-      { icon: Landmark, bg: '#FFF3E0', color: '#C58B43', title: "Алауддин Мухаммад II и Гургандж", text: "В 1210 г. Мухаммад II отвоевал Мавераннахр у каракитаев. Столичный Гургандж (Куня-Ургенч) стал одним из богатейших городов исламского мира." },
-      { icon: Swords, bg: '#FEF2F2', color: '#DC2626', title: "Монгольское нашествие (1219–1221)", text: "В 1219 г. войска Чингисхана вторглись в ослабленную внутренними распрями державу. Жители Гурганджа героически оборонялись семь месяцев, пока монголы не разрушили плотину на Амударье." },
-      { icon: Shield, bg: '#E8F5EE', color: '#319568', title: "Джалаладдин Мангуберди (1220–1231)", text: "Последний Хорезмшах одержал победу над монголами при Парване и 11 лет продолжал сопротивление от берегов Инда до Кавказа и Азербайджана." },
+      { icon: 'book', bg: '#E8F5EE', color: '#319568', title: "Академия Мамуна (1004)", text: "При дворе Хорезмшаха в Гургандже трудились аль-Беруни, Ибн Сина, Абу Наср ибн Ирак и Масихи, создавшие фундаментальные труды по математике, астрономии и медицине." },
+      { icon: 'crown', bg: '#EBF3FA', color: '#15528B', title: "Атсыз, Иль-Арслан и Текеш", text: "Атсыз (1127–1156) заложил основы независимости, Иль-Арслан (1156–1172) расширил границы в Хорасан, а Текеш (1172–1200) в 1194 г. разгромил последних иракских сельджуков, удвоив территорию державы." },
+      { icon: 'museum', bg: '#FFF3E0', color: '#C58B43', title: "Алауддин Мухаммад II и Гургандж", text: "В 1210 г. Мухаммад II отвоевал Мавераннахр у каракитаев. Столичный Гургандж (Куня-Ургенч) стал одним из богатейших городов исламского мира." },
+      { icon: 'swords', bg: '#FEF2F2', color: '#DC2626', title: "Монгольское нашествие (1219–1221)", text: "В 1219 г. войска Чингисхана вторглись в ослабленную внутренними распрями державу. Жители Гурганджа героически оборонялись семь месяцев, пока монголы не разрушили плотину на Амударье." },
+      { icon: 'shield', bg: '#E8F5EE', color: '#319568', title: "Джалаладдин Мангуберди (1220–1231)", text: "Последний Хорезмшах одержал победу над монголами при Парване и 11 лет продолжал сопротивление от берегов Инда до Кавказа и Азербайджана." },
     ],
     rulersTitle: "Главные Хорезмшахи династии Ануштегинидов",
     rulers: [
@@ -85,11 +86,11 @@ const shahsContent = {
       { l: "Imperial Capital", v: "Old Urgench" },
     ],
     cards: [
-      { icon: BookOpen, bg: '#E8F5EE', color: '#319568', title: "Academy of Mamun (1004)", text: "At the court of Gurganj, al-Biruni, Ibn Sina, and Abu Nasr ibn Iraq collaborated on astronomy, trigonometry, Earth’s curvature, and encyclopedic medicine." },
-      { icon: Crown, bg: '#EBF3FA', color: '#15528B', title: "Atsiz, Il-Arslan & Tekish", text: "Atsiz (1127–1156) asserted autonomy from the Seljuks; Il-Arslan pushed into Khorasan; and Ala al-Din Tekish (1172–1200) defeated Toghrul III in 1194, doubling the empire’s extent across Persia." },
-      { icon: Landmark, bg: '#FFF3E0', color: '#C58B43', title: "Muhammad II & Splendid Gurganj", text: "Muhammad II (1200–1220) reclaimed Transoxiana from the Qara Khitai in 1210, turning Old Urgench into a legendary metropolis of scholarship and tiled domes." },
-      { icon: Swords, bg: '#FEF2F2', color: '#DC2626', title: "Mongol Siege (1219–1221)", text: "Exploiting court divisions, Genghis Khan invaded in 1219. Citizens defended Gurganj fiercely for seven months in 1221 until Mongol forces breached the Amu Darya dykes." },
-      { icon: Shield, bg: '#E8F5EE', color: '#319568', title: "Jalal al-Din Manguberdi (1220–1231)", text: "Victory at Parwan and an extraordinary 11-year campaign across the Indus basin, Iran, and Azerbaijan cemented Jalal al-Din’s fame as an undaunted warrior-king." },
+      { icon: 'book', bg: '#E8F5EE', color: '#319568', title: "Academy of Mamun (1004)", text: "At the court of Gurganj, al-Biruni, Ibn Sina, and Abu Nasr ibn Iraq collaborated on astronomy, trigonometry, Earth’s curvature, and encyclopedic medicine." },
+      { icon: 'crown', bg: '#EBF3FA', color: '#15528B', title: "Atsiz, Il-Arslan & Tekish", text: "Atsiz (1127–1156) asserted autonomy from the Seljuks; Il-Arslan pushed into Khorasan; and Ala al-Din Tekish (1172–1200) defeated Toghrul III in 1194, doubling the empire’s extent across Persia." },
+      { icon: 'museum', bg: '#FFF3E0', color: '#C58B43', title: "Muhammad II & Splendid Gurganj", text: "Muhammad II (1200–1220) reclaimed Transoxiana from the Qara Khitai in 1210, turning Old Urgench into a legendary metropolis of scholarship and tiled domes." },
+      { icon: 'swords', bg: '#FEF2F2', color: '#DC2626', title: "Mongol Siege (1219–1221)", text: "Exploiting court divisions, Genghis Khan invaded in 1219. Citizens defended Gurganj fiercely for seven months in 1221 until Mongol forces breached the Amu Darya dykes." },
+      { icon: 'shield', bg: '#E8F5EE', color: '#319568', title: "Jalal al-Din Manguberdi (1220–1231)", text: "Victory at Parwan and an extraordinary 11-year campaign across the Indus basin, Iran, and Azerbaijan cemented Jalal al-Din’s fame as an undaunted warrior-king." },
     ],
     rulersTitle: "Key Rulers of the Anushteginid Dynasty",
     rulers: [
@@ -146,8 +147,8 @@ export default function KhorezmshahsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {content.cards.map((c) => (
             <div key={c.title} className="bg-white border border-[#E5EAF0] rounded-2xl p-5 hover:shadow-sm transition-shadow">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: c.bg, color: c.color }}>
-                <c.icon size={20} />
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: c.bg }}>
+                <Icon3D name={c.icon} alt={c.title} size={28} />
               </div>
               <h3 className="font-bold text-[#17243B] mb-2">{c.title}</h3>
               <p className="text-sm text-[#66758A] leading-relaxed">{c.text}</p>

@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, ChevronRight, Compass, Landmark, Route, CheckCircle, Star } from 'lucide-react';
+import { MapPin, Clock, ChevronRight, CheckCircle } from 'lucide-react';
 import { getAttractions } from '../data/attractions';
 import { useLanguage } from '../hooks/useLanguage';
 import PageHero from '../components/common/PageHero';
+import Icon3D from '../components/common/Icon3D';
 
 const itinerariesByLang = {
   uz: [
@@ -63,10 +64,10 @@ export default function TourismPage() {
   ];
 
   const sidebarItems = [
-    { label: tur.aboutTitle, href: '#about', icon: Compass },
-    { label: tur.popularTitle, href: '#attractions', icon: Landmark },
-    { label: tur.itinerariesTitle, href: '#routes', icon: Route },
-    { label: tur.eventsTitle, href: '#events', icon: Star },
+    { label: tur.aboutTitle, href: '#about', icon: 'compass' },
+    { label: tur.popularTitle, href: '#attractions', icon: 'museum' },
+    { label: tur.itinerariesTitle, href: '#routes', icon: 'map' },
+    { label: tur.eventsTitle, href: '#events', icon: 'star' },
   ];
 
   const filtered = catKey === 'all' ? attractions : attractions.filter((a) => a.categoryKey === catKey);
@@ -98,7 +99,7 @@ export default function TourismPage() {
                       idx === 0 ? 'bg-[#15528B] text-white' : 'text-[#66758A] hover:bg-[#EBF3FA] hover:text-[#15528B]'
                     }`}
                   >
-                    <item.icon size={14} className="shrink-0" />
+                    <Icon3D name={item.icon} size={18} />
                     <span className="truncate">{item.label}</span>
                   </a>
                 ))}
@@ -210,8 +211,8 @@ export default function TourismPage() {
                     <div className="p-3.5">
                       <h3 className="font-bold text-[#17243B] text-sm mb-1.5">{it.title}</h3>
                       <div className="flex gap-3 text-[11px] text-[#66758A]">
-                        <span>📍 {it.objects}</span>
-                        <span>⏱ {it.time}</span>
+                        <span className="inline-flex items-center gap-1"><Icon3D name="map-pin" size={14} /> {it.objects}</span>
+                        <span className="inline-flex items-center gap-1"><Icon3D name="clock" size={14} /> {it.time}</span>
                       </div>
                     </div>
                   </div>

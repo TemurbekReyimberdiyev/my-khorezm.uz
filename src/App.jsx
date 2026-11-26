@@ -89,6 +89,7 @@ function App() {
           <Route path="/media" element={<MediaPage />} />
           <Route path="/media/teleradio" element={<TvRadioPage />} />
           <Route path="/xarita" element={<MapPage />} />
+          <Route path="/map" element={<MapPage />} />
           <Route path="/ai-yordamchi" element={<AIAssistantPage />} />
           <Route path="/qidiruv" element={<SearchPage />} />
 

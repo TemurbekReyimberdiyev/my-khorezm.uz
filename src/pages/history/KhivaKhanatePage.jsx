@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Landmark, Castle, ScrollText, Flag, Crown, ArrowLeft, ArrowRight, ZoomIn } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ZoomIn } from 'lucide-react';
 import { useLanguage } from '../../hooks/useLanguage';
 import PageHero from '../../components/common/PageHero';
 import ImageLightbox from '../../components/common/ImageLightbox';
+import Icon3D from '../../components/common/Icon3D';
 
 const khanateContent = {
   uz: {
@@ -17,10 +18,10 @@ const khanateContent = {
       { l: "Gandimiyon bitimi", v: "1873-yil 12-avgust" },
     ],
     cards: [
-      { icon: Crown, bg: '#FFF3E0', color: '#C58B43', title: "Shayboniy–Arabshohiylar davri (1511–1804)", text: "Elbarsxon (1511–1516) asos solgan sulolada Abulg'oziy Bahodirxon (1643–1663) alohida o'rin tutadi: u 1643-yilda Toza Urganchga (hozirgi Urganch) asos solib, «Shajarayi turk» asarini yozdi; o'g'li Anushaxon esa Shovot kanalini qazdirdi." },
-      { icon: Castle, bg: '#EBF3FA', color: '#15528B', title: "Qo'ng'irotlar sulolasi va Ichan-Qal'a (1763/1804–1920)", text: "Muhammad Amin Inoq va Eltuzarxon (1804) Qo'ng'irotlar hokimiyatini mustahkamladi. Muhammad Rahimxon I (1806–1825) va Olloqulixon (1825–1842) davrida Toshhovli saroyi, karvonsaroy va o'nlab madrasalar bunyod etildi." },
-      { icon: ScrollText, bg: '#E8F5EE', color: '#319568', title: "1873-yil Gandimiyon shartnomasi va Feruz", text: "Muhammad Rahimxon II — Feruz (1864–1910) davrida Markaziy Osiyoda ilk toshbosma nashriyot, Xorazm maqomlari va Munis–Ogahiy tarix maktabi yuksaldi. 1873-yilgi Gandimiyon shartnomasidan keyin xonlik Rossiya imperiyasi protektoratiga aylandi." },
-      { icon: Flag, bg: '#F3EEFF', color: '#7C3AED', title: "Islomxo'ja islohotlari va xonlik tugatilishi (1910–1920)", text: "Bosh vazir Islomxo'ja 1910–1913-yillarda yangi maktab, shifoxona va pochta-telegraf qurdirdi. 1918–1920-yillarda so'nggi xon Said Abdullaxon davrida siyosiy inqiroz kuchayib, 1920-yil 2-fevralda xonlik tugatildi." },
+      { icon: 'crown', bg: '#FFF3E0', color: '#C58B43', title: "Shayboniy–Arabshohiylar davri (1511–1804)", text: "Elbarsxon (1511–1516) asos solgan sulolada Abulg'oziy Bahodirxon (1643–1663) alohida o'rin tutadi: u 1643-yilda Toza Urganchga (hozirgi Urganch) asos solib, «Shajarayi turk» asarini yozdi; o'g'li Anushaxon esa Shovot kanalini qazdirdi." },
+      { icon: 'museum', bg: '#EBF3FA', color: '#15528B', title: "Qo'ng'irotlar sulolasi va Ichan-Qal'a (1763/1804–1920)", text: "Muhammad Amin Inoq va Eltuzarxon (1804) Qo'ng'irotlar hokimiyatini mustahkamladi. Muhammad Rahimxon I (1806–1825) va Olloqulixon (1825–1842) davrida Toshhovli saroyi, karvonsaroy va o'nlab madrasalar bunyod etildi." },
+      { icon: 'scroll', bg: '#E8F5EE', color: '#319568', title: "1873-yil Gandimiyon shartnomasi va Feruz", text: "Muhammad Rahimxon II — Feruz (1864–1910) davrida Markaziy Osiyoda ilk toshbosma nashriyot, Xorazm maqomlari va Munis–Ogahiy tarix maktabi yuksaldi. 1873-yilgi Gandimiyon shartnomasidan keyin xonlik Rossiya imperiyasi protektoratiga aylandi." },
+      { icon: 'flag', bg: '#F3EEFF', color: '#7C3AED', title: "Islomxo'ja islohotlari va xonlik tugatilishi (1910–1920)", text: "Bosh vazir Islomxo'ja 1910–1913-yillarda yangi maktab, shifoxona va pochta-telegraf qurdirdi. 1918–1920-yillarda so'nggi xon Said Abdullaxon davrida siyosiy inqiroz kuchayib, 1920-yil 2-fevralda xonlik tugatildi." },
     ],
     rulersTitle: "Xiva xonligining eng mashhur hukmdorlari",
     rulers: [
@@ -52,10 +53,10 @@ const khanateContent = {
       { l: "Гандимиянский договор", v: "12 августа 1873 г." },
     ],
     cards: [
-      { icon: Crown, bg: '#FFF3E0', color: '#C58B43', title: "Династия Шейбанидов–Арабшахидов (1511–1804)", text: "При Абульгази Бахадурхане (1643–1663) в 1643 г. был основан Новый Ургенч и написан труд «Родословная тюрков», при Ануша-хане прорыт канал Шават, а при Шергази-хане (1717) отбита экспедиция Бековича-Черкасского." },
-      { icon: Castle, bg: '#EBF3FA', color: '#15528B', title: "Династия Кунгратов и Ичан-Кала (1804–1920)", text: "Эльтузар-хан (1804) закрепил трон за Кунгратами. Мухаммад Рахим-хан I объединил земли Приаралья, а при Аллакули-хане (1825–1842) возведены дворец Таш-Хаули и торговые купола." },
-      { icon: ScrollText, bg: '#E8F5EE', color: '#319568', title: "Договор 1873 года и эпоха Феруза", text: "При Мухаммаде Рахим-хане II (поэт Феруз, 1864–1910) открылась первая типография, развивались макомы и историческая школа Муниса и Агахи. После Гандимиянского договора 1873 г. ханство стало протекторатом Российской империи." },
-      { icon: Flag, bg: '#F3EEFF', color: '#7C3AED', title: "Реформы Ислам-Ходжи и 1920 год", text: "В 1910–1913 гг. визирь Ислам-Ходжа построил светскую школу, больницу и высокий минарет. 2 февраля 1920 года последний хан Саид Абдулла-хан отрёкся от престола, уступив место Хорезмской НСР." },
+      { icon: 'crown', bg: '#FFF3E0', color: '#C58B43', title: "Династия Шейбанидов–Арабшахидов (1511–1804)", text: "При Абульгази Бахадурхане (1643–1663) в 1643 г. был основан Новый Ургенч и написан труд «Родословная тюрков», при Ануша-хане прорыт канал Шават, а при Шергази-хане (1717) отбита экспедиция Бековича-Черкасского." },
+      { icon: 'museum', bg: '#EBF3FA', color: '#15528B', title: "Династия Кунгратов и Ичан-Кала (1804–1920)", text: "Эльтузар-хан (1804) закрепил трон за Кунгратами. Мухаммад Рахим-хан I объединил земли Приаралья, а при Аллакули-хане (1825–1842) возведены дворец Таш-Хаули и торговые купола." },
+      { icon: 'scroll', bg: '#E8F5EE', color: '#319568', title: "Договор 1873 года и эпоха Феруза", text: "При Мухаммаде Рахим-хане II (поэт Феруз, 1864–1910) открылась первая типография, развивались макомы и историческая школа Муниса и Агахи. После Гандимиянского договора 1873 г. ханство стало протекторатом Российской империи." },
+      { icon: 'flag', bg: '#F3EEFF', color: '#7C3AED', title: "Реформы Ислам-Ходжи и 1920 год", text: "В 1910–1913 гг. визирь Ислам-Ходжа построил светскую школу, больницу и высокий минарет. 2 февраля 1920 года последний хан Саид Абдулла-хан отрёкся от престола, уступив место Хорезмской НСР." },
     ],
     rulersTitle: "Выдающиеся правители Хивинского ханства",
     rulers: [
@@ -87,10 +88,10 @@ const khanateContent = {
       { l: "Gandimiyon Treaty", v: "August 12, 1873" },
     ],
     cards: [
-      { icon: Crown, bg: '#FFF3E0', color: '#C58B43', title: "Arabshahid Dynasty (1511–1804)", text: "Founded by Ilbars Khan, the dynasty reached cultural distinction under scholar-khan Abulghazi Bahadur (1643–1663), founder of New Urgench (1643) and author of Shajara-i Turk, while Anushakhan dug the Shavat Canal." },
-      { icon: Castle, bg: '#EBF3FA', color: '#15528B', title: "Kungrat Dynasty & Ichan-Kala (1804–1920)", text: "Eltuzar Khan (1804) inaugurated formal Kungrat rule. Muhammad Rahim Khan I unified the Aral delta, and Alloqulikhan (1825–1842) constructed Toshhovli Palace, caravanserais, and major madrasas." },
-      { icon: ScrollText, bg: '#E8F5EE', color: '#319568', title: "1873 Gandimiyon Treaty & Khan Feruz", text: "Despite becoming a Russian protectorate after the 1873 Treaty of Gandimiyon, Khan Muhammad Rahim II (poet Feruz, 1864–1910) established Central Asia’s first lithographic press and championed Khorezmian maqom and historiography." },
-      { icon: Flag, bg: '#F3EEFF', color: '#7C3AED', title: "Islam Khoja Reforms & 1920 Abdication", text: "Grand Vizier Islam Khoja erected Khiva’s tallest minaret, a modern school, hospital, and telegraph office (1910–1913). Following political upheaval, Said Abdullah Khan abdicated on February 2, 1920." },
+      { icon: 'crown', bg: '#FFF3E0', color: '#C58B43', title: "Arabshahid Dynasty (1511–1804)", text: "Founded by Ilbars Khan, the dynasty reached cultural distinction under scholar-khan Abulghazi Bahadur (1643–1663), founder of New Urgench (1643) and author of Shajara-i Turk, while Anushakhan dug the Shavat Canal." },
+      { icon: 'museum', bg: '#EBF3FA', color: '#15528B', title: "Kungrat Dynasty & Ichan-Kala (1804–1920)", text: "Eltuzar Khan (1804) inaugurated formal Kungrat rule. Muhammad Rahim Khan I unified the Aral delta, and Alloqulikhan (1825–1842) constructed Toshhovli Palace, caravanserais, and major madrasas." },
+      { icon: 'scroll', bg: '#E8F5EE', color: '#319568', title: "1873 Gandimiyon Treaty & Khan Feruz", text: "Despite becoming a Russian protectorate after the 1873 Treaty of Gandimiyon, Khan Muhammad Rahim II (poet Feruz, 1864–1910) established Central Asia’s first lithographic press and championed Khorezmian maqom and historiography." },
+      { icon: 'flag', bg: '#F3EEFF', color: '#7C3AED', title: "Islam Khoja Reforms & 1920 Abdication", text: "Grand Vizier Islam Khoja erected Khiva’s tallest minaret, a modern school, hospital, and telegraph office (1910–1913). Following political upheaval, Said Abdullah Khan abdicated on February 2, 1920." },
     ],
     rulersTitle: "Notable Khans of Khiva",
     rulers: [
@@ -149,8 +150,8 @@ export default function KhivaKhanatePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {content.cards.map((c) => (
             <div key={c.title} className="bg-white border border-[#E5EAF0] rounded-2xl p-5 hover:shadow-sm transition-shadow">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: c.bg, color: c.color }}>
-                <c.icon size={20} />
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: c.bg }}>
+                <Icon3D name={c.icon} alt={c.title} size={28} />
               </div>
               <h3 className="font-bold text-[#17243B] mb-2">{c.title}</h3>
               <p className="text-sm text-[#66758A] leading-relaxed">{c.text}</p>

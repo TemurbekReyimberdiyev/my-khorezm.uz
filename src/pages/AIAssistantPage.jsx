@@ -1,9 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Sparkles } from 'lucide-react';
+import { Send, User } from 'lucide-react';
 import { getSuggestedQuestions, getAiReply } from '../data/aiResponses';
 import { useLanguage } from '../hooks/useLanguage';
 import PagePathBar from '../components/common/PagePathBar';
+import Icon3D from '../components/common/Icon3D';
 
 export default function AIAssistantPage() {
   const { language, t } = useLanguage();
@@ -47,7 +48,7 @@ export default function AIAssistantPage() {
         <PagePathBar variant="inline" className="mb-4" />
         <div className="bg-white border border-[#E5EAF0] rounded-2xl p-4 mb-4 flex items-center gap-3">
           <div className="w-12 h-12 bg-gradient-to-br from-[#15528B] to-[#123A61] rounded-xl flex items-center justify-center shrink-0">
-            <Sparkles size={22} className="text-white" />
+            <Icon3D name="bot" size={30} />
           </div>
           <div>
             <h1 className="font-bold text-[#17243B]">{aiText.title}</h1>
@@ -76,7 +77,7 @@ export default function AIAssistantPage() {
               <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
                 {msg.role === 'assistant' && (
                   <div className="w-8 h-8 rounded-full bg-[#EBF3FA] flex items-center justify-center shrink-0 mt-0.5">
-                    <Bot size={15} className="text-[#15528B]" />
+                    <Icon3D name="bot" size={20} />
                   </div>
                 )}
                 <div
