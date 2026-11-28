@@ -78,7 +78,9 @@ export default function Header() {
 
           <div className="flex items-center gap-2 sm:gap-4 md:gap-7 shrink-0">
             <div className="hidden md:flex items-center gap-2.5 text-[#17243B]">
-              <Icon3D name="clock" size={28} eager />
+              <div className="w-9 h-9 rounded-xl bg-[#F0FDFA] border border-[#E5EAF0] flex items-center justify-center">
+                <Icon3D name="clock" size={20} />
+              </div>
               <div>
                 <div className="text-[11px] text-[#66758A] leading-none">{t.header.time}</div>
                 <div className="font-bold text-lg leading-tight text-[#17243B]">{hours}:{minutes}</div>
@@ -92,12 +94,13 @@ export default function Header() {
               title={weatherTooltip}
               className="hidden md:flex items-center gap-2.5 text-left rounded-lg px-2 py-1 -mx-2 hover:bg-[#F7F9FC] transition-colors cursor-pointer"
             >
-              <Icon3D
-                name={weatherIconName}
-                size={32}
-                eager
-                className={refreshing ? 'animate-pulse' : ''}
-              />
+              <div className="w-9 h-9 rounded-xl bg-[#FFFBEB] border border-[#E5EAF0] flex items-center justify-center">
+                <Icon3D
+                  name={weatherIconName}
+                  size={22}
+                  className={refreshing ? 'animate-pulse' : ''}
+                />
+              </div>
               <div>
                 <div className="text-[11px] text-[#66758A] leading-none">{t.header.weather}</div>
                 <div className="font-bold text-lg leading-tight text-[#17243B]">{formatTemp(temperature)}</div>
@@ -112,7 +115,7 @@ export default function Header() {
                     key={lang}
                     onClick={() => changeLanguage(lang)}
                     className={`px-2.5 py-1 text-xs font-semibold uppercase rounded-md transition-colors cursor-pointer ${
-                      language === lang ? 'bg-[#15528B] text-white shadow-xs' : 'text-[#66758A] hover:text-[#17243B]'
+                      language === lang ? 'bg-[#0B4A6F] text-white shadow-xs' : 'text-[#66758A] hover:text-[#17243B]'
                     }`}
                   >
                     {lang}
@@ -125,7 +128,7 @@ export default function Header() {
                 className="md:hidden p-2 rounded-lg hover:bg-[#F7F9FC] cursor-pointer"
                 aria-label={t.nav.search}
               >
-                <Search size={20} className="text-[#17243B]" />
+                <Search size={19} strokeWidth={1.8} className="text-[#0B4A6F]" />
               </button>
               <button
                 type="button"
@@ -134,7 +137,7 @@ export default function Header() {
                 aria-label="Menu"
                 aria-expanded={menuOpen}
               >
-                <Menu size={22} className="text-[#17243B]" />
+                <Menu size={20} strokeWidth={1.8} className="text-[#0B4A6F]" />
               </button>
             </div>
           </div>
@@ -144,7 +147,7 @@ export default function Header() {
       <div className="md:hidden border-t border-[#E5EAF0] bg-[#F7F9FC]/90">
         <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-1.5 text-[#17243B] min-w-0">
-            <Icon3D name="clock" size={18} eager />
+            <Icon3D name="clock" size={16} />
             <span className="font-bold tabular-nums shrink-0">{hours}:{minutes}</span>
             <span className="text-[#66758A] truncate">· {dateStr}</span>
           </div>
@@ -156,8 +159,7 @@ export default function Header() {
           >
             <Icon3D
               name={weatherIconName}
-              size={20}
-              eager
+              size={18}
               className={refreshing ? 'animate-pulse' : ''}
             />
             <span className="font-bold">{formatTemp(temperature)}</span>

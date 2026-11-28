@@ -6,14 +6,14 @@ export default function CategoryGrid() {
   const { t } = useLanguage();
 
   const categories = [
-    { icon: 'mountain', label: t.categories.geography, href: '/geografiya', bg: '#E8F5EE' },
-    { icon: 'museum', label: t.categories.history, href: '/tarix', bg: '#EBF3FA' },
-    { icon: 'map', label: t.categories.districts, href: '/tumanlar', bg: '#F3EEFF' },
-    { icon: 'camera', label: t.categories.tourism, href: '/turizm', bg: '#E0F7FA' },
-    { icon: 'music', label: t.categories.culture, href: '/madaniyat', bg: '#FDE8F3' },
-    { icon: 'cuisine', label: t.categories.cuisine, href: '/taomlar', bg: '#FFF1E6' },
-    { icon: 'chart', label: t.categories.economy, href: '/iqtisodiyot', bg: '#EBF3FA' },
-    { icon: 'leaf', label: t.categories.ecology, href: '/ekologiya', bg: '#E8F5EE' },
+    { icon: 'cat-geography', label: t.categories.geography, href: '/geografiya', bg: '#ECFDF5' },
+    { icon: 'cat-history', label: t.categories.history, href: '/tarix', bg: '#FFFBEB' },
+    { icon: 'cat-districts', label: t.categories.districts, href: '/tumanlar', bg: '#F0FDFA' },
+    { icon: 'cat-tourism', label: t.categories.tourism, href: '/turizm', bg: '#EFF6FF' },
+    { icon: 'cat-culture', label: t.categories.culture, href: '/madaniyat', bg: '#F0FDFA' },
+    { icon: 'cat-cuisine', label: t.categories.cuisine, href: '/taomlar', bg: '#FFFBEB' },
+    { icon: 'cat-economy', label: t.categories.economy, href: '/iqtisodiyot', bg: '#FFFBEB' },
+    { icon: 'cat-ecology', label: t.categories.ecology, href: '/ekologiya', bg: '#ECFDF5' },
   ];
 
   return (
@@ -23,10 +23,13 @@ export default function CategoryGrid() {
           <Link
             key={href}
             to={href}
-            className="bg-white border border-[#E5EAF0] rounded-xl p-3 flex flex-col items-center gap-2 hover:shadow-md hover:-translate-y-0.5 transition-all group text-center"
+            className="bg-white border border-[#E5EAF0] rounded-xl p-3 flex flex-col items-center gap-2.5 hover:shadow-md hover:-translate-y-0.5 transition-all group text-center"
           >
-            <div className="w-11 h-11 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform" style={{ backgroundColor: bg }}>
-              <Icon3D name={icon} alt={label} size={28} />
+            <div
+              className="w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform"
+              style={{ backgroundColor: bg }}
+            >
+              <Icon3D name={icon} alt={label} size={34} />
             </div>
             <span className="text-xs text-[#17243B] font-medium leading-tight whitespace-pre-line">{label}</span>
           </Link>

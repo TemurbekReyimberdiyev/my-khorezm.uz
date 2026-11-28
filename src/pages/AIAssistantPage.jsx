@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useState, useRef, useEffect } from 'react';
-import { Send, User } from 'lucide-react';
+import { Bot, Send, User } from 'lucide-react';
 import { getSuggestedQuestions, getAiReply } from '../data/aiResponses';
 import { useLanguage } from '../hooks/useLanguage';
 import PagePathBar from '../components/common/PagePathBar';

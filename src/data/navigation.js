@@ -1,8 +1,9 @@
 export function getNavItems(t) {
   return [
-    { id: 'home', label: t.nav.home, href: '/' },
+    { id: 'home', icon: 'home', label: t.nav.home, href: '/' },
     {
       id: 'geography',
+      icon: 'nav-geography',
       label: t.nav.geography,
       href: '/geografiya',
       children: [
@@ -14,6 +15,7 @@ export function getNavItems(t) {
     },
     {
       id: 'history',
+      icon: 'nav-history',
       label: t.nav.history,
       href: '/tarix',
       children: [
@@ -23,9 +25,10 @@ export function getNavItems(t) {
         { id: 'archive', label: t.nav.historyTimeline, href: '/tarix/xorazm-tarixi' },
       ],
     },
-    { id: 'districts', label: t.nav.districts, href: '/tumanlar' },
+    { id: 'districts', icon: 'nav-districts', label: t.nav.districts, href: '/tumanlar' },
     {
       id: 'tourism',
+      icon: 'nav-tourism',
       label: t.nav.tourism,
       href: '/turizm',
       children: [
@@ -36,6 +39,7 @@ export function getNavItems(t) {
     },
     {
       id: 'culture',
+      icon: 'nav-culture',
       label: t.nav.culture,
       href: '/madaniyat',
       children: [
@@ -47,11 +51,12 @@ export function getNavItems(t) {
         { id: 'ai', label: t.nav.aiAssistant, href: '/ai-yordamchi' },
       ],
     },
-    { id: 'economy', label: t.nav.economy, href: '/iqtisodiyot' },
-    { id: 'ecology', label: t.nav.ecology, href: '/ekologiya' },
-    { id: 'news', label: t.nav.news, href: '/yangiliklar' },
+    { id: 'economy', icon: 'nav-economy', label: t.nav.economy, href: '/iqtisodiyot' },
+    { id: 'ecology', icon: 'nav-ecology', label: t.nav.ecology, href: '/ekologiya' },
+    { id: 'news', icon: 'nav-news', label: t.nav.news, href: '/yangiliklar' },
     {
       id: 'media',
+      icon: 'nav-media',
       label: t.nav.media,
       href: '/media',
       children: [

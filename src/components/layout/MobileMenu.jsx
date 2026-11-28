@@ -3,6 +3,7 @@ import { X, ChevronRight, ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../../hooks/useLanguage';
 import { getNavItems } from '../../data/navigation';
+import Icon3D from '../common/Icon3D';
 
 export default function MobileMenu({ open, onClose }) {
   const location = useLocation();
@@ -40,10 +41,10 @@ export default function MobileMenu({ open, onClose }) {
 
   const navGroups = getNavItems(t);
   const extraLinks = [
-    { label: t.nav.map, href: '/xarita' },
-    { label: t.nav.aiAssistant, href: '/ai-yordamchi' },
-    { label: t.nav.education, href: '/ilm-fan' },
-    { label: t.nav.search, href: '/qidiruv' },
+    { icon: 'map', label: t.nav.map, href: '/xarita' },
+    { icon: 'bot', label: t.nav.aiAssistant, href: '/ai-yordamchi' },
+    { icon: 'graduation', label: t.nav.education, href: '/ilm-fan' },
+    { icon: 'search', label: t.nav.search, href: '/qidiruv' },
   ];
 
   if (!open) return null;
@@ -82,11 +83,14 @@ export default function MobileMenu({ open, onClose }) {
                   to={item.href}
                   onClick={onClose}
                   className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                    active ? 'bg-[#EBF3FA] text-[#15528B]' : 'text-[#17243B] hover:bg-[#F7F9FC]'
+                    active ? 'bg-[#EFF6FF] text-[#0B4A6F]' : 'text-[#17243B] hover:bg-[#F7F9FC]'
                   }`}
                 >
-                  <span>{item.label}</span>
-                  <ChevronRight size={15} className="text-[#C8D3E0]" />
+                  <span className="flex items-center gap-2.5">
+                    <Icon3D name={item.icon} size={19} />
+                    <span>{item.label}</span>
+                  </span>
+                  <ChevronRight size={16} strokeWidth={1.8} className="text-[#C8D3E0]" />
                 </Link>
               );
             }
@@ -97,11 +101,12 @@ export default function MobileMenu({ open, onClose }) {
                   <Link
                     to={item.href}
                     onClick={onClose}
-                    className={`flex-1 px-3 py-2.5 rounded-l-xl text-sm font-medium transition-colors ${
-                      active ? 'bg-[#EBF3FA] text-[#15528B]' : 'text-[#17243B] hover:bg-[#F7F9FC]'
+                    className={`flex-1 flex items-center gap-2.5 px-3 py-2.5 rounded-l-xl text-sm font-medium transition-colors ${
+                      active ? 'bg-[#EFF6FF] text-[#0B4A6F]' : 'text-[#17243B] hover:bg-[#F7F9FC]'
                     }`}
                   >
-                    {item.label}
+                    <Icon3D name={item.icon} size={19} />
+                    <span>{item.label}</span>
                   </Link>
                   <button
                     type="button"
@@ -109,10 +114,10 @@ export default function MobileMenu({ open, onClose }) {
                     aria-label={item.label}
                     aria-expanded={isOpen}
                     className={`p-2.5 rounded-r-xl transition-colors cursor-pointer ${
-                      active ? 'bg-[#EBF3FA] text-[#15528B]' : 'text-[#66758A] hover:bg-[#F7F9FC]'
+                      active ? 'bg-[#EFF6FF] text-[#0B4A6F]' : 'text-[#66758A] hover:bg-[#F7F9FC]'
                     }`}
                   >
-                    <ChevronDown size={16} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={16} strokeWidth={1.8} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
                 {isOpen && (
@@ -145,12 +150,15 @@ export default function MobileMenu({ open, onClose }) {
                 onClick={onClose}
                 className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                   location.pathname === item.href
-                    ? 'bg-[#EBF3FA] text-[#15528B]'
+                    ? 'bg-[#EFF6FF] text-[#0B4A6F]'
                     : 'text-[#17243B] hover:bg-[#F7F9FC]'
                 }`}
               >
-                <span>{item.label}</span>
-                <ChevronRight size={15} className="text-[#C8D3E0]" />
+                <span className="flex items-center gap-2.5">
+                  <Icon3D name={item.icon} size={19} />
+                  <span>{item.label}</span>
+                </span>
+                <ChevronRight size={16} strokeWidth={1.8} className="text-[#C8D3E0]" />
               </Link>
             ))}
           </div>

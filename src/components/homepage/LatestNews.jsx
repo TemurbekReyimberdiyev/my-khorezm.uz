@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar } from 'lucide-react';
+import { ArrowRight, CalendarDays } from 'lucide-react';
 import { getArticles } from '../../data/articles';
 import { useLanguage } from '../../hooks/useLanguage';
 import Badge from '../common/Badge';
@@ -31,7 +31,7 @@ export default function LatestNews() {
           </p>
           <div className="flex items-center flex-wrap gap-2 mt-2.5">
             <span className="text-xs text-[#66758A] flex items-center gap-1">
-              <Calendar size={12} className="text-[#66758A]" /> {topNews.date}
+              <CalendarDays size={15} strokeWidth={1.8} className="text-[#F59E0B]" /> {topNews.date}
             </span>
             <Badge variant="primary" className="text-[10px]">
               {topNews.category}

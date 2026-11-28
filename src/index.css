@@ -118,6 +118,29 @@ a, button {
   animation: pulse-soft 2s ease infinite;
 }
 
+/* Unified Lucide icon styling: standard strokeWidth 1.8 and high-contrast inside active solid buttons */
+svg.lucide {
+  stroke-width: 1.8;
+}
+
+a[class*="bg-[#15528B]"] .app-icon,
+button[class*="bg-[#15528B]"] .app-icon,
+a[class*="bg-[#0B4A6F]"] .app-icon,
+button[class*="bg-[#0B4A6F]"] .app-icon {
+  color: #FFFFFF !important;
+  stroke: currentColor;
+}
+
+a[class*="bg-[#15528B]"] .app-custom-icon [stroke="#0B4A6F"],
+button[class*="bg-[#15528B]"] .app-custom-icon [stroke="#0B4A6F"] {
+  stroke: #FFFFFF !important;
+}
+
+a[class*="bg-[#15528B]"] .app-custom-icon [fill="#0B4A6F"],
+button[class*="bg-[#15528B]"] .app-custom-icon [fill="#0B4A6F"] {
+  fill: #FFFFFF !important;
+}
+
 /* Nav underline */
 .nav-link-active::after {
   content: '';

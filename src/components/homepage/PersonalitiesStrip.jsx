@@ -14,7 +14,7 @@ export default function PersonalitiesStrip() {
         <div className="flex flex-col lg:flex-row lg:items-center gap-6">
           <div className="lg:w-60 shrink-0">
             <div className="flex items-center gap-2 mb-2">
-              <Icon3D name="award" size={24} />
+              <Icon3D name="star" size={24} />
               <h2 className="font-bold text-[#17243B] text-lg">{t.home.personalitiesTitle}</h2>
             </div>
             <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-4">{t.home.personalitiesSubtitle}</p>

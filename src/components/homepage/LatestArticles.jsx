@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Eye, Calendar } from 'lucide-react';
+import { ArrowRight, Eye, CalendarDays } from 'lucide-react';
 import { getArticles } from '../../data/articles';
 import { useLanguage } from '../../hooks/useLanguage';
 import Icon3D from '../common/Icon3D';
@@ -49,10 +49,10 @@ export default function LatestArticles() {
                 </h3>
                 <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-[#F7F9FC] text-xs text-[#66758A]">
                   <span className="flex items-center gap-1">
-                    <Calendar size={11} /> {a.date}
+                    <CalendarDays size={15} strokeWidth={1.8} className="text-[#F59E0B]" /> {a.date}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Eye size={11} /> {a.views || '1.4K'}
+                    <Eye size={15} strokeWidth={1.8} className="text-[#0B4A6F]" /> {a.views || '1.4K'}
                   </span>
                 </div>
               </div>

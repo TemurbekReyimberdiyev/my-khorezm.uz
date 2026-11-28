@@ -1,6 +1,6 @@
 ﻿import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, TrendingUp, TrendingDown } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getEconomyData } from '../data/economy';
 import { getArticles } from '../data/articles';
@@ -195,7 +195,9 @@ export default function EconomyPage() {
                   <div className="space-y-4">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="text-[#319568] font-semibold">↗ {tradeLabels.exp}</span>
+                        <span className="text-[#1E9B3E] font-semibold inline-flex items-center gap-1">
+                          <TrendingUp size={15} strokeWidth={1.8} /> {tradeLabels.exp}
+                        </span>
                         <span className="font-bold text-[#17243B]">{data.trade.exportVal}</span>
                       </div>
                       <div className="h-2.5 bg-[#E8F5EE] rounded-full overflow-hidden">
@@ -204,7 +206,9 @@ export default function EconomyPage() {
                     </div>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="text-[#15528B] font-semibold">↘ {tradeLabels.imp}</span>
+                        <span className="text-[#0B4A6F] font-semibold inline-flex items-center gap-1">
+                          <TrendingDown size={15} strokeWidth={1.8} /> {tradeLabels.imp}
+                        </span>
                         <span className="font-bold text-[#17243B]">{data.trade.importVal}</span>
                       </div>
                       <div className="h-2.5 bg-[#EBF3FA] rounded-full overflow-hidden">

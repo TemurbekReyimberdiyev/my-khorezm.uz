@@ -47,7 +47,7 @@ export default function MapPreview() {
         <div className="lg:col-span-7 bg-white border border-[#E5EAF0] rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row gap-5 items-stretch md:items-center">
           <div className="md:w-52 shrink-0">
             <div className="flex items-center gap-2 mb-2">
-              <Icon3D name="map-pin" size={24} />
+              <Icon3D name="map" size={24} />
               <h2 className="font-bold text-[#17243B] text-base sm:text-lg leading-tight">{t.home.mapTitle}</h2>
             </div>
             <p className="text-xs sm:text-sm text-[#66758A] leading-relaxed mb-4">{t.home.mapSubtitle}</p>
@@ -95,14 +95,14 @@ export default function MapPreview() {
 
             <div className="grid grid-cols-2 gap-2.5 mb-3">
               <div className="flex items-center gap-2.5 p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F7F9FC]">
-                <Icon3D name="wind" size={22} />
+                <Icon3D name="wind" size={18} />
                 <div>
                   <div className="text-[11px] text-[#66758A]">PM2.5</div>
                   <div className="text-xs font-bold text-[#17243B]">{pm25} µg/m³</div>
                 </div>
               </div>
               <div className="flex items-center gap-2.5 p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F7F9FC]">
-                <Icon3D name="wind" size={22} />
+                <Icon3D name="wind" size={18} />
                 <div>
                   <div className="text-[11px] text-[#66758A]">PM10</div>
                   <div className="text-xs font-bold text-[#17243B]">{pm10} µg/m³</div>
@@ -117,7 +117,7 @@ export default function MapPreview() {
                 { icon: 'wind', label: t.home.windLabel, value: `${windSpeed} m/s` },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-2 p-2 rounded-lg border border-[#E5EAF0] text-xs">
-                  <Icon3D name={item.icon} alt={item.label} size={20} />
+                  <Icon3D name={item.icon} alt={item.label} size={18} />
                   <div className="min-w-0">
                     <div className="text-[10px] text-[#66758A] truncate">{item.label}</div>
                     <div className="font-bold text-[#17243B]">{item.value}</div>

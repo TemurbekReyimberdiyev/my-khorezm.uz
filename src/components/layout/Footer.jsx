@@ -59,7 +59,7 @@ export default function Footer() {
                     aria-label={label}
                     className="w-9 h-9 rounded-xl bg-[#F7F9FC] border border-[#E5EAF0] flex items-center justify-center hover:bg-[#EBF3FA] hover:scale-105 transition-all"
                   >
-                    <Icon3D name={icon} alt={label} size={24} />
+                    <Icon3D name={icon} alt={label} size={17} />
                   </a>
                 ))}
               </div>
@@ -114,14 +114,14 @@ export default function Footer() {
                 <h4 className="font-semibold text-[#17243B] mb-2 text-xs">{mobileLabel}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="flex items-center gap-2 bg-[#17243B] text-white px-2.5 py-1.5 rounded-lg text-xs">
-                    <Icon3D name="app-store" alt="App Store" size={20} />
+                    <Icon3D name="app-store" alt="App Store" size={18} />
                     <div className="min-w-0">
                       <div className="text-[8px] text-white/70 leading-none truncate">Download on the</div>
                       <div className="font-semibold text-[11px] leading-tight truncate">App Store</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 bg-[#17243B] text-white px-2.5 py-1.5 rounded-lg text-xs">
-                    <Icon3D name="google-play" alt="Google Play" size={20} />
+                    <Icon3D name="google-play" alt="Google Play" size={18} />
                     <div className="min-w-0">
                       <div className="text-[8px] text-white/70 leading-none truncate">GET IT ON</div>
                       <div className="font-semibold text-[11px] leading-tight truncate">Google Play</div>
@@ -151,7 +151,7 @@ export default function Footer() {
                 <div className="relative z-10">
                   <div className="flex items-start gap-2.5 mb-2">
                     <div className="w-10 h-10 rounded-xl bg-white border border-[#E6D6B5] flex items-center justify-center shrink-0">
-                      <Icon3D name="donate" size={26} />
+                      <Icon3D name="donate" size={24} />
                     </div>
                     <h4 className="font-bold text-[#17243B] text-sm leading-snug">{t.donate.cardTitle}</h4>
                   </div>
@@ -163,9 +163,9 @@ export default function Footer() {
                     onClick={() => setDonateOpen(true)}
                     className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#2A74BA] to-[#15528B] hover:from-[#15528B] hover:to-[#123A61] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-xs cursor-pointer transition-all"
                   >
-                    <Icon3D name="heart" size={18} />
+                    <Icon3D name="heart" size={16} color="#FFFFFF" />
                     <span>{t.donate.cardButton}</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={15} strokeWidth={1.8} />
                   </button>
                 </div>
               </div>
