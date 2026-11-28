@@ -212,7 +212,22 @@ const LUCIDE_ICON_REGISTRY = {
   geography: { icon: Mountain, tone: 'green' },
 };
 
-export default function Icon3D({ name, alt = '', size = 24, strokeWidth = 1.8, color, className = '' }) {
+export default function Icon3D({ name, alt = '', size = 24, strokeWidth = 1.8, color, className = '', variant = 'default', eager = false }) {
+  if (variant === '3d') {
+    return (
+      <img
+        src={`/images/icons3d/${name}.png`}
+        alt={alt}
+        width={size}
+        height={size}
+        style={{ width: size, height: size }}
+        className={`inline-block object-contain shrink-0 select-none ${className}`}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+    );
+  }
+
   const CustomIcon = CUSTOM_ICON_REGISTRY[name];
   if (CustomIcon) {
     return (

@@ -78,9 +78,7 @@ export default function Header() {
 
           <div className="flex items-center gap-2 sm:gap-4 md:gap-7 shrink-0">
             <div className="hidden md:flex items-center gap-2.5 text-[#17243B]">
-              <div className="w-9 h-9 rounded-xl bg-[#F0FDFA] border border-[#E5EAF0] flex items-center justify-center">
-                <Icon3D name="clock" size={20} />
-              </div>
+              <Icon3D name="clock" size={28} eager variant="3d" />
               <div>
                 <div className="text-[11px] text-[#66758A] leading-none">{t.header.time}</div>
                 <div className="font-bold text-lg leading-tight text-[#17243B]">{hours}:{minutes}</div>
@@ -94,13 +92,13 @@ export default function Header() {
               title={weatherTooltip}
               className="hidden md:flex items-center gap-2.5 text-left rounded-lg px-2 py-1 -mx-2 hover:bg-[#F7F9FC] transition-colors cursor-pointer"
             >
-              <div className="w-9 h-9 rounded-xl bg-[#FFFBEB] border border-[#E5EAF0] flex items-center justify-center">
-                <Icon3D
-                  name={weatherIconName}
-                  size={22}
-                  className={refreshing ? 'animate-pulse' : ''}
-                />
-              </div>
+              <Icon3D
+                name={weatherIconName}
+                size={32}
+                eager
+                variant="3d"
+                className={refreshing ? 'animate-pulse' : ''}
+              />
               <div>
                 <div className="text-[11px] text-[#66758A] leading-none">{t.header.weather}</div>
                 <div className="font-bold text-lg leading-tight text-[#17243B]">{formatTemp(temperature)}</div>
@@ -147,7 +145,7 @@ export default function Header() {
       <div className="md:hidden border-t border-[#E5EAF0] bg-[#F7F9FC]/90">
         <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-1.5 text-[#17243B] min-w-0">
-            <Icon3D name="clock" size={16} />
+            <Icon3D name="clock" size={18} eager variant="3d" />
             <span className="font-bold tabular-nums shrink-0">{hours}:{minutes}</span>
             <span className="text-[#66758A] truncate">· {dateStr}</span>
           </div>
@@ -159,7 +157,9 @@ export default function Header() {
           >
             <Icon3D
               name={weatherIconName}
-              size={18}
+              size={20}
+              eager
+              variant="3d"
               className={refreshing ? 'animate-pulse' : ''}
             />
             <span className="font-bold">{formatTemp(temperature)}</span>

@@ -59,7 +59,7 @@ export default function Footer() {
                     aria-label={label}
                     className="w-9 h-9 rounded-xl bg-[#F7F9FC] border border-[#E5EAF0] flex items-center justify-center hover:bg-[#EBF3FA] hover:scale-105 transition-all"
                   >
-                    <Icon3D name={icon} alt={label} size={17} />
+                    <Icon3D name={icon} alt={label} size={24} variant="3d" />
                   </a>
                 ))}
               </div>
